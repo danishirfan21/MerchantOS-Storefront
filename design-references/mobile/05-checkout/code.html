@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-dim": "#cbdbf5", "surface-container-lowest": "#ffffff", "on-primary-container": "#f5fff7", "on-error": "#ffffff", "primary-fixed": "#85f8c4", "primary-fixed-dim": "#68dba9", "tertiary-container": "#00855b", "background": "#f8f9ff", "on-primary-fixed-variant": "#005137", "on-tertiary-container": "#f5fff6", "tertiary": "#006947", "on-background": "#0b1c30", "secondary": "#565e74", "primary-container": "#00855d", "on-surface-variant": "#3d4a42", "secondary-fixed": "#dae2fd", "surface-container-low": "#eff4ff", "on-secondary": "#ffffff", "inverse-surface": "#213145", "outline": "#6d7a72", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "on-secondary-container": "#5c647a", "on-tertiary-fixed": "#002113", "on-secondary-fixed": "#131b2e", "inverse-on-surface": "#eaf1ff", "tertiary-fixed-dim": "#4edea3", "on-primary-fixed": "#002114", "on-surface": "#0b1c30", "outline-variant": "#bccac0", "on-primary": "#ffffff", "on-error-container": "#93000a", "secondary-container": "#dae2fd", "inverse-primary": "#68dba9", "surface-tint": "#006c4a", "secondary-fixed-dim": "#bec6e0", "on-tertiary-fixed-variant": "#005236", "surface-variant": "#d3e4fe", "surface": "#f8f9ff", "surface-bright": "#f8f9ff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#3f465c", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "primary": "#006948", "on-tertiary": "#ffffff", "tertiary-fixed": "#6ffbbe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-sm": "1rem", "space-xl": "2.5rem", "gutter-lg": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter-sm": "1rem", "margin-lg": "4rem" }, fontFamily: { "display-hero-mobile": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "price-lg": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "display-hero": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "price-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Plus Jakarta Sans"] }, fontSize: { "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}], "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}], "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "price-lg": ["24px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}], "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "800"}], "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "price-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "700"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "600"}], "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/95 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Go Back" class="w-11 h-11 -ml-2 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></button><div class="flex items-center gap-2"><div class="w-7 h-7 rounded bg-primary flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[16px]">storefront</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight truncate">Secure Checkout</h1></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest shadow-[0_1px_3px_rgba(15,23,42,0.04)]"><span class="material-symbols-outlined text-[16px] text-primary">lock</span><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold tracking-wide">256-bit SSL</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-safe"><div class="flex flex-col w-full pb-10">
+<!-- Step Track Indicator -->
+<div class="px-margin-sm py-3 bg-surface-container-lowest shadow-sm mb-3">
+<div class="flex items-center justify-between">
+<!-- Step 1 Complete -->
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">1. Cart</span>
+</div>
+<div class="h-0.5 flex-1 mx-2 bg-primary"></div>
+<!-- Step 2 Active -->
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shadow-sm">
+          2
+        </div>
+<span class="font-label-md text-label-md text-on-surface font-bold">Checkout</span>
+</div>
+<div class="h-0.5 flex-1 mx-2 bg-surface-dim"></div>
+<!-- Step 3 Pending -->
+<div class="flex items-center gap-1.5 opacity-60">
+<div class="w-5 h-5 rounded-full bg-surface-dim text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm font-semibold">
+          3
+        </div>
+<span class="font-label-md text-label-md text-on-surface-variant">Confirm</span>
+</div>
+</div>
+</div>
+<div class="px-margin-sm flex flex-col gap-3">
+<!-- Collapsible Mini Order Summary -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all duration-300">
+<button class="w-full px-4 py-3.5 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors" id="toggle-summary" onclick="const d = document.getElementById('order-summary-details'); const i = document.getElementById('summary-chevron'); d.classList.toggle('hidden'); i.classList.toggle('rotate-180');" type="button">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<div class="text-left">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Order Overview</div>
+<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">3 items • 6,496.00 SAR</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="font-label-sm text-label-sm font-semibold">Details</span>
+<span class="material-symbols-outlined text-[18px] transition-transform duration-200" id="summary-chevron">expand_more</span>
+</div>
+</button>
+<!-- Expandable Drawer -->
+<div class="hidden px-4 pb-4 bg-surface-container-lowest" id="order-summary-details">
+<div class="pt-2 pb-3 flex flex-col gap-2.5">
+<!-- Item 1 -->
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container-low shadow-sm" data-alt="Flagship ultra-slim titanium space black smartphone resting on reflective minimalist slate studio podium, premium commercial consumer tech product photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGKIrAhPXzwrCbFk2ui7nQlvEqSXTDdPiV5UGERCiRMYgZqSqQrIgX--dGQJdO7ckBXo3tAoI0AWvhAM8CCH-RmwEtxkut-4fe8mrSi9-2dpp5_437dKdtvG-X7kSA_94OuQH45eipWGhcJW9bQ_rUFGJysXrZUvpW1S1KDuqa8lmR6lBQmRvr5Vbi7QV-x6eZ9xIyrD4F-_u_Ockqz55jL6GOGV7WgdLTLu25Bwg4"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface font-medium truncate">AuraPhone 15 Pro Max 256GB</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Natural Titanium • Qty: 1</p>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">4,699 SAR</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container-low shadow-sm" data-alt="Modern wireless noise cancelling over-ear studio headphones in midnight silver finish standing on pure white matte pedestal high-end audio gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5znS_VnqaMcpz_kCriKXxLSrFrSeosx8mDcc_zBmMm956WUAWZJ7NVbE4aNPX3ereN_Ql2saHSaG1siTTWREqer48i8AoUIxJdTw8hoUypPzOmskif8_il3CKfFcYQGDyBrlmk23_RagyMRFHhfBCcwL8MjsLSKFXtxB5nSdP7Tk6ArCHEFFrkJXHKB5Ej9pqqF9QOA--zjbQpyGWoMgKTt3WLRKbwaoafAypJ3qg"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface font-medium truncate">AuraPods Studio ANC</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Silver Frost • Qty: 1</p>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">1,499 SAR</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container-low shadow-sm" data-alt="Compact dual port 65W fast charger block plug with braided high-grade USB-C emerald accent cable on light table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaAjlxgqr0-6L5tqPGDdJvaL3awBAjtt7AxqBHn3gW7mPYq7mm5-qi-ujJoMEn1QCpopjCYFzhDFFs86XQcJIeJ2KQlhSU_wxBld2Il8zwOxp0qcWH8EuLbrkTNTjbyPD_GlPA2XV-vb4LxHOc3qCK_n0YPzMAWivmoilpwhkKQT5FVvLjf2SJKPQdvccvLTFJ-XhzOAsQW7tRlsq2ZG6LL2m7rYv7oW_-GURi6RGN"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface font-medium truncate">PowerVault 65W GaN Fast Charger</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Matte White • Qty: 1</p>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">298 SAR</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-3 flex flex-col gap-1.5">
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>6,496.00 SAR</span>
+</div>
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-primary font-semibold">FREE (Express)</span>
+</div>
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span>VAT (15% Included)</span>
+<span>847.30 SAR</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 1: Contact Information -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold font-label-sm text-label-sm">
+            1
+          </div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Contact Information</h2>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Full Name</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">person</span>
+<input class="w-full h-11 pl-9 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md shadow-none focus:outline-none focus:bg-surface-container-lowest transition-colors" type="text" value="Tariq Al-Harbi"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">mail</span>
+<input class="w-full h-11 pl-9 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-colors" type="email" value="tariq.harbi@example.sa"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Mobile Phone (KSA)</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">smartphone</span>
+<input class="w-full h-11 pl-9 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-colors font-mono" type="tel" value="+966 50 123 4567"/>
+</div>
+</div>
+<!-- SMS Tracking Consent -->
+<label class="flex items-start gap-2.5 pt-1 cursor-pointer select-none">
+<div class="relative flex items-center pt-0.5">
+<input checked="" class="w-4 h-4 rounded bg-surface-container-high text-primary accent-primary" type="checkbox"/>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Receive real-time SMS order tracking updates &amp; dispatch alerts
+          </span>
+</label>
+</div>
+</div>
+<!-- Step 2: National Address & Delivery Speed -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold font-label-sm text-label-sm">
+            2
+          </div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Delivery Address</h2>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">local_shipping</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">National Address</span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Country</label>
+<div class="h-11 px-3 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-between">
+<span class="font-body-md text-body-md font-medium">Saudi Arabia (المملكة العربية السعودية)</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">public</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">City</label>
+<div class="relative flex items-center">
+<select class="w-full h-11 px-3 pr-8 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:outline-none">
+<option selected="">Riyadh (الرياض)</option>
+<option>Jeddah (جدة)</option>
+<option>Dammam (الدمام)</option>
+<option>Khobar (الخبر)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant pointer-events-none text-[18px]">keyboard_arrow_down</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Postal Code</label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="text" value="12211"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">District &amp; Street</label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="text" value="Al Olaya, King Fahd Road"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Building / Villa / Apt</label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="text" value="Building 14, Apt 402"/>
+</div>
+<!-- Delivery Speed Selector -->
+<div class="pt-1 flex flex-col gap-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Select Delivery Speed</label>
+<!-- Option A (Active) -->
+<label class="p-3 rounded-xl bg-surface-container flex items-center justify-between cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input checked="" class="w-4 h-4 accent-primary" name="delivery_speed" type="radio"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Express Delivery</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm">FREE</span>
+</div>
+<p class="font-body-sm text-body-sm text-primary font-semibold">Tomorrow by 6:00 PM</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[22px]">bolt</span>
+</label>
+<!-- Option B -->
+<label class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 accent-primary" name="delivery_speed" type="radio"/>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-medium">Scheduled Delivery</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Choose 2-hour window (+15 SAR)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[22px]">schedule</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Step 3: Payment Method -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold font-label-sm text-label-sm">
+            3
+          </div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Payment Method</h2>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">Encrypted</span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Radio Option 1: Card Payment (Selected Active Prototype) -->
+<div class="rounded-xl bg-surface-container p-3 flex flex-col gap-3">
+<label class="flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input checked="" class="w-4 h-4 accent-primary" name="payment_method" type="radio" value="card"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Debit / Credit Card</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Mada, Visa, Mastercard</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-2 py-1 rounded-md shadow-xs">
+<span class="font-label-sm text-label-sm font-bold text-primary">mada</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">VISA</span>
+</div>
+</label>
+<!-- Simulated Nested Card Fields -->
+<div class="bg-surface-container-lowest rounded-lg p-3 flex flex-col gap-2 shadow-xs">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Card Number</label>
+<div class="relative flex items-center">
+<input class="w-full h-10 px-3 pr-10 rounded-md bg-surface-container-low text-on-surface font-body-md text-body-md font-mono focus:outline-none" type="text" value="•••• •••• •••• 9021"/>
+<span class="material-symbols-outlined absolute right-3 text-primary text-[20px]">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Expires</label>
+<input class="w-full h-10 px-3 rounded-md bg-surface-container-low text-on-surface font-body-md text-body-md font-mono focus:outline-none" type="text" value="08/28"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">CVV / CVC</label>
+<div class="relative flex items-center">
+<input class="w-full h-10 px-3 pr-8 rounded-md bg-surface-container-low text-on-surface font-body-md text-body-md font-mono focus:outline-none" type="password" value="•••"/>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-[16px]">info</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Radio Option 2: Apple Pay -->
+<label class="rounded-xl bg-surface-container-low p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="w-4 h-4 accent-primary" name="payment_method" type="radio" value="apple_pay"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Apple Pay</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Instant 1-Touch Checkout</div>
+</div>
+</div>
+<div class="w-10 h-7 rounded bg-on-surface text-surface-container-lowest flex items-center justify-center font-bold text-[12px] tracking-tight">
+            Pay
+          </div>
+</label>
+<!-- Radio Option 3: Cash on Delivery -->
+<label class="rounded-xl bg-surface-container-low p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="w-4 h-4 accent-primary" name="payment_method" type="radio" value="cod"/>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Cash on Delivery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">SAR 20 handling fee applies</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[22px]">payments</span>
+</label>
+</div>
+</div>
+<!-- Security & Trust Proof -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-on-surface font-bold">Saudi Local Payment Shield</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">PCI-DSS Level 1 Compliant • Instant Refund Guarantee</div>
+</div>
+</div>
+<!-- Grand Total & Final Action Area -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-4 flex flex-col gap-3.5 mt-1">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Grand Total</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Includes 15% VAT</span>
+</div>
+<div class="text-right">
+<div class="font-price-lg text-price-lg text-on-surface">6,496.00 <span class="text-[16px] font-semibold text-primary">SAR</span></div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-transform" id="place-order-button" onclick="this.innerText='Processing Securely...'; this.classList.add('opacity-90'); setTimeout(() =&gt; { alert('Order #ORD-9821 successfully authenticated and placed!'); this.innerText='Place Order (6,496 SAR) 🔒'; this.classList.remove('opacity-90'); }, 1200);" type="button">
+<span>Place Order (6,496 SAR)</span>
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+<!-- Consumer Protection & SASO Note -->
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center leading-relaxed">
+        Prototype storefront • Saudi SASO compliant electronics with certified 2-year warranty &amp; 14-day hassle-free return charter.
+      </p>
+</div>
+</div>
+</div></main></body></html>

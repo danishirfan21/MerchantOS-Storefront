@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-dim": "#cbdbf5", "surface-container-lowest": "#ffffff", "on-primary-container": "#f5fff7", "on-error": "#ffffff", "primary-fixed": "#85f8c4", "primary-fixed-dim": "#68dba9", "tertiary-container": "#00855b", "background": "#f8f9ff", "on-primary-fixed-variant": "#005137", "on-tertiary-container": "#f5fff6", "tertiary": "#006947", "on-background": "#0b1c30", "secondary": "#565e74", "primary-container": "#00855d", "on-surface-variant": "#3d4a42", "secondary-fixed": "#dae2fd", "surface-container-low": "#eff4ff", "on-secondary": "#ffffff", "inverse-surface": "#213145", "outline": "#6d7a72", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "on-secondary-container": "#5c647a", "on-tertiary-fixed": "#002113", "on-secondary-fixed": "#131b2e", "inverse-on-surface": "#eaf1ff", "tertiary-fixed-dim": "#4edea3", "on-primary-fixed": "#002114", "on-surface": "#0b1c30", "outline-variant": "#bccac0", "on-primary": "#ffffff", "on-error-container": "#93000a", "secondary-container": "#dae2fd", "inverse-primary": "#68dba9", "surface-tint": "#006c4a", "secondary-fixed-dim": "#bec6e0", "on-tertiary-fixed-variant": "#005236", "surface-variant": "#d3e4fe", "surface": "#f8f9ff", "surface-bright": "#f8f9ff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#3f465c", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "primary": "#006948", "on-tertiary": "#ffffff", "tertiary-fixed": "#6ffbbe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-sm": "1rem", "space-xl": "2.5rem", "gutter-lg": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter-sm": "1rem", "margin-lg": "4rem" }, fontFamily: { "display-hero-mobile": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "price-lg": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "display-hero": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "price-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Plus Jakarta Sans"] }, fontSize: { "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}], "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}], "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "price-lg": ["24px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}], "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "800"}], "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "price-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "700"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "600"}], "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-sm flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-[0_2px_8px_rgba(0,105,72,0.25)]"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">Merchant<span class="text-primary">OS</span></span><span class="font-label-sm text-[9px] uppercase tracking-wider text-secondary leading-tight mt-0.5">Storefront KSA</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Search Catalog" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Wishlist" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span></a><a aria-label="Shopping Cart" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] px-1 bg-primary text-on-primary font-label-sm text-[10px] rounded-full flex items-center justify-center leading-none font-bold">3</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-24"><div class="flex flex-col w-full pb-20">
+<!-- Top Contextual Sub-bar -->
+<div class="px-margin-sm py-space-xs flex items-center justify-between">
+<a aria-label="Go Back" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface shadow-sm active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</a>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Share Product" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface shadow-sm active:scale-95 transition-transform" id="shareBtn">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Add to Wishlist" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant shadow-sm active:scale-95 transition-transform" id="favBtn">
+<span class="material-symbols-outlined text-[20px]" id="favIcon">favorite_border</span>
+</button>
+</div>
+</div>
+<!-- Device Gallery Section -->
+<div class="px-margin-sm flex flex-col gap-space-sm">
+<div class="relative w-full aspect-[4/4.5] rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex items-center justify-center">
+<!-- Floating Badges -->
+<div class="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm uppercase tracking-wider shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> GCC Spec
+        </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm">
+          CITC Approved
+        </span>
+</div>
+<!-- Discount Tag -->
+<div class="absolute top-3 right-3 z-10">
+<span class="px-2 py-1 rounded-full bg-error-container text-on-error-container font-label-sm font-bold shadow-sm">
+          -5% OFF
+        </span>
+</div>
+<!-- Main Showcase Image -->
+<div class="w-full h-full flex items-center justify-center transition-all duration-300 p-4" id="galleryContainer">
+<img class="w-full h-full object-contain drop-shadow-md select-none" data-alt="Apple iPhone 16 Pro Max in Natural Titanium finish resting upright in an architectural, sleek editorial lighting setup with cool tones, subtle soft ambient shadow and pure crisp detail showcasing the textured titanium chassis edge and triple camera module glass reflections." id="mainProductImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG2PBjbY0Rcwy9JaGhCLKs9nQanxRQGo2FzPPYInSuUmNjEMDZ_AZS4BK-D7KnyfBAJrEKu-JDYAJWOyyH9tW5Dox5n6kwHGLjs_scixgHQKViAT_jkyFPldFDnYn0NOb_bds1i2_VnNpFmIOns34JgMDrkgHBBPLHqpOCjrXwHYZxuCuRTeRDwuigJK9kEDsy9xEiar_TKgd5MZtsAq2zoOCdmdKhU4PNiiGvJIC6"/>
+</div>
+<!-- Dots Indicator -->
+<div class="absolute bottom-3 inset-x-0 flex justify-center items-center gap-1.5 z-10" id="dotsContainer">
+<span class="w-5 h-1.5 rounded-full bg-primary transition-all duration-300" data-dot="0"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" data-dot="1"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" data-dot="2"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" data-dot="3"></span>
+</div>
+</div>
+<!-- Thumbnails Carousel Strip -->
+<div class="flex items-center gap-2 overflow-x-auto py-1 px-0.5">
+<button class="thumb-btn flex-shrink-0 w-16 h-16 rounded-lg bg-surface-container-lowest shadow-md p-1.5 flex items-center justify-center transition-all opacity-100" data-index="0" onclick="setThumb(0)">
+<img class="w-full h-full object-contain" data-alt="Front view display screen of Apple iPhone 16 Pro Max displaying dynamic island and crisp ultra-thin bezels under soft studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkPL6jsRz_hZ-lHB9HujLHwJ6tcf6qMTK-prhv7DbgHKtInwYeuTMeJJdc08NHR5NxbTa8Ev8Wp8bc9iDHTwKqYZLyGUYwZUDJ94Ol5kOQD8vrZ9cuL2uzYzNkvFDhFpt4INVY1t-81yBRa8K9dXmiOBXIdH6Jo0ybTwME5wMIkB1CG1tkXU2f0x_E5yyHFYvKvH45xU6HtEiLbUGOFmSbXy5Lp0NhpoZtzVMT3swW"/>
+</button>
+<button class="thumb-btn flex-shrink-0 w-16 h-16 rounded-lg bg-surface-container-lowest shadow-sm p-1.5 flex items-center justify-center transition-all opacity-60" data-index="1" onclick="setThumb(1)">
+<img class="w-full h-full object-contain" data-alt="Isometric perspective showing dynamic curved edge, titanium finish frame and camera control button of iPhone 16 Pro Max." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1bG8UagjInmmF7De-3cT5j2iOTtBiO3gjdZGwC1YvwBd-xofSHjGKGUkEyt1b0gXJ2uSI4qrSw9uC648LbLLj-Py-m18potX5OrCrZJBCO2icivU7HigYkrBTn7O139-Fb8mjwb-BRCbwSMUaFAKMIrr1bcYSaiuiCsHArGH6A9kVMb98hONSkRMLJ3SLq9Vtk2HyMtYXBtM_rrV05hQ6w7UR5QT9vAloROh47p5B"/>
+</button>
+<button class="thumb-btn flex-shrink-0 w-16 h-16 rounded-lg bg-surface-container-lowest shadow-sm p-1.5 flex items-center justify-center transition-all opacity-60" data-index="2" onclick="setThumb(2)">
+<img class="w-full h-full object-contain" data-alt="Extreme macro close-up of triple lens camera system with LiDAR scanner and tactile ceramic back glass texture of Natural Titanium iPhone 16 Pro Max." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1SSu9kC6X8FY_w_MNQH6R3fHWF_lpzocKhWkRoGNjdxBvMMUsYeq9Wa1Bg86p5JTTCyLpyP47Lw2oY-3B0S_VY8rGUWhTNmYK9Gwx0kpU14sF7QVYY2EgeCLl1d-fDJU1n8L4YCQkH8gM_pCSDU8YeDdw0SMGpf7zqpealywoiqz8j7gfap2U3t-iM_-D2qnBp-u9MSlRHbmox6-z3pOrZK9jJSN-DGvMRUVSPmDS"/>
+</button>
+<button class="thumb-btn flex-shrink-0 w-16 h-16 rounded-lg bg-surface-container-lowest shadow-sm p-1.5 flex items-center justify-center transition-all opacity-60" data-index="3" onclick="setThumb(3)">
+<img class="w-full h-full object-contain" data-alt="Rear full back panel of iPhone 16 Pro Max in brushed Natural Titanium displaying understated Apple logo and sculpted camera plateau." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVypiasaZkm44G6shb08-NYRUc0pxZtH-RqL-UvFX_1BcKhqgoF77V8PeEqKuJHE7lvBXSGJdUTDDmcYYuKKDuDsHnb1tq2gVlmlto6yflzX_pXaXzFy4sAUL920CX5FbdlZOSN1y5RF7yCkZtJm1xRF8sgnZTOHGq-7N7jvUm0hLgLkNNocRGu6rGpgOtN6fjuH8Qi5-7QkADK-QeEL-du0BZIY0ghpH8HaThw684"/>
+</button>
+</div>
+</div>
+<!-- Primary Info Block -->
+<div class="px-margin-sm mt-space-md flex flex-col gap-space-xs">
+<!-- Breadcrumbs / Tag -->
+<div class="flex items-center gap-1.5 text-secondary font-label-md">
+<span>Smartphones</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Apple</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">iPhone 16 Pro Max</span>
+</div>
+<!-- Title & Rating -->
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface mt-1 leading-snug">
+      Apple iPhone 16 Pro Max 256GB
+    </h1>
+<div class="flex items-center gap-2 mt-0.5">
+<div class="flex items-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg font-bold ml-1 text-on-surface">4.9</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm text-secondary underline decoration-dotted">412 reviews</span>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> 2-Yr AppleCare GCC
+      </span>
+</div>
+<!-- Price Section -->
+<div class="mt-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-baseline gap-2">
+<span class="font-price-lg text-price-lg text-primary tracking-tight font-extrabold" id="mainPriceDisplay">5,199 SAR</span>
+<span class="font-body-md text-body-md text-secondary line-through">5,499 SAR</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-secondary-container font-label-sm font-semibold ml-auto">
+          Save 300 SAR
+        </span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">
+        Price includes 15% Saudi VAT &amp; CITC Regulatory Clearance
+      </span>
+<!-- Tabby / Tamara Installment Pill -->
+<div class="mt-1 p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center font-label-sm font-black text-on-surface">
+            4x
+          </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Tabby / Tamara Split</span>
+<span class="font-body-sm text-[12px] text-secondary">Or 4 monthly payments of <strong>1,299.75 SAR</strong></span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-secondary">info</span>
+</div>
+</div>
+</div>
+<!-- Configurator Options -->
+<div class="px-margin-sm mt-space-md flex flex-col gap-space-md">
+<!-- Color Finish -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface">Finish: <strong id="finishLabel">Natural Titanium</strong></span>
+<span class="font-label-sm text-label-sm text-secondary">Grade 5 Titanium</span>
+</div>
+<div class="flex items-center gap-3 py-1">
+<!-- Natural Titanium (Active) -->
+<button class="color-swatch relative w-11 h-11 rounded-full p-0.5 shadow-md flex items-center justify-center bg-surface-container-lowest" data-color="Natural Titanium" onclick="selectColor(this, 'Natural Titanium')">
+<span class="w-8 h-8 rounded-full bg-[#8E8B82] shadow-inner flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-white">check</span>
+</span>
+</button>
+<!-- Desert Titanium -->
+<button class="color-swatch relative w-11 h-11 rounded-full p-0.5 shadow-sm flex items-center justify-center bg-surface-container-lowest opacity-70" data-color="Desert Titanium" onclick="selectColor(this, 'Desert Titanium')">
+<span class="w-8 h-8 rounded-full bg-[#C5B39E] shadow-inner"></span>
+</button>
+<!-- White Titanium -->
+<button class="color-swatch relative w-11 h-11 rounded-full p-0.5 shadow-sm flex items-center justify-center bg-surface-container-lowest opacity-70" data-color="White Titanium" onclick="selectColor(this, 'White Titanium')">
+<span class="w-8 h-8 rounded-full bg-[#E3E4E5] shadow-inner"></span>
+</button>
+<!-- Black Titanium -->
+<button class="color-swatch relative w-11 h-11 rounded-full p-0.5 shadow-sm flex items-center justify-center bg-surface-container-lowest opacity-70" data-color="Black Titanium" onclick="selectColor(this, 'Black Titanium')">
+<span class="w-8 h-8 rounded-full bg-[#3B3A3E] shadow-inner"></span>
+</button>
+</div>
+</div>
+<!-- Storage Options -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface">Storage Capacity</span>
+<span class="font-label-sm text-label-sm text-primary">Apple NVMe Fast Storage</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- 256 GB Selected -->
+<button class="storage-btn flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-lowest shadow-md transition-all text-on-surface text-center" data-capacity="256 GB" onclick="selectStorage(this, 5199, '256 GB')">
+<span class="font-headline-sm text-[15px] font-bold">256 GB</span>
+<span class="font-label-sm text-[11px] text-primary mt-0.5">Included</span>
+</button>
+<!-- 512 GB -->
+<button class="storage-btn flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low shadow-sm transition-all text-on-surface-variant text-center" data-capacity="512 GB" onclick="selectStorage(this, 5999, '512 GB')">
+<span class="font-headline-sm text-[15px] font-bold">512 GB</span>
+<span class="font-label-sm text-[11px] text-secondary mt-0.5">+800 SAR</span>
+</button>
+<!-- 1 TB -->
+<button class="storage-btn flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low shadow-sm transition-all text-on-surface-variant text-center" data-capacity="1 TB" onclick="selectStorage(this, 6799, '1 TB')">
+<span class="font-headline-sm text-[15px] font-bold">1 TB</span>
+<span class="font-label-sm text-[11px] text-secondary mt-0.5">+1,600 SAR</span>
+</button>
+</div>
+</div>
+<!-- Stock Status Micro-card -->
+<div class="p-3 rounded-lg bg-surface-container-lowest shadow-sm flex items-start gap-2.5">
+<span class="w-3 h-3 rounded-full bg-primary mt-1 animate-pulse flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">
+          In Stock at Riyadh Central Hub
+        </span>
+<span class="font-body-sm text-body-sm text-secondary">
+          24 units remaining • Order within <strong class="text-on-surface">2 hrs 14 mins</strong> for Same-Day Riyadh Delivery.
+        </span>
+</div>
+</div>
+<!-- Quantity & Action Inline -->
+<div class="flex items-center gap-3 mt-1">
+<!-- Quantity Stepper -->
+<div class="flex items-center bg-surface-container-lowest shadow-sm rounded-lg p-1 h-12">
+<button aria-label="Decrease quantity" class="w-9 h-full rounded flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors" onclick="updateQty(-1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-8 text-center font-label-lg font-bold text-on-surface" id="qtyCounter">1</span>
+<button aria-label="Increase quantity" class="w-9 h-full rounded flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors" onclick="updateQty(1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Add to Bag CTA Button -->
+<button class="flex-1 h-12 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="addBagBtn" onclick="triggerCartToast()">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+<span>Add to Bag</span>
+</button>
+</div>
+<!-- Retail Trust Badges Row -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center text-center gap-1">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<span class="font-label-sm text-[11px] font-semibold text-on-surface">2-Yr GCC Spec</span>
+<span class="font-body-sm text-[10px] text-secondary">Official Ministry Warranty</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center text-center gap-1">
+<span class="material-symbols-outlined text-primary text-[20px]">published_with_changes</span>
+<span class="font-label-sm text-[11px] font-semibold text-on-surface">14-Day Free</span>
+<span class="font-body-sm text-[10px] text-secondary">Hassle-free return policy</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center text-center gap-1">
+<span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+<span class="font-label-sm text-[11px] font-semibold text-on-surface">Mada &amp; Apple Pay</span>
+<span class="font-body-sm text-[10px] text-secondary">SAMA Approved Gateway</span>
+</div>
+</div>
+</div>
+<!-- Frequently Bought Together Bundle -->
+<div class="px-margin-sm mt-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Frequently Bought Together</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary text-on-tertiary font-label-sm font-bold">Bundle Save 15%</span>
+</div>
+<!-- Bundle Items visual connection -->
+<div class="flex items-center gap-2 overflow-x-auto py-2">
+<div class="flex-shrink-0 w-20 h-20 rounded-lg bg-surface-container-low p-2 flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain" data-alt="iPhone 16 Pro Max device thumbnail for bundle package." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFV2uNb9vIgxdvY71FQdrUTttP_He2AQ2_H88HWWwLw4kePbib23xuniOxqh57z_4Hf1kGwNGg3x0B9oecXTMPEjLrRtPXpWPZDtZQmLudxAb4rpvwgLlDRoAhCbB_sF7xyMKWncgkIhbpgTNJfpM-aPmGtayK7RlgMOTxvWDtnvv-hbL7zVjB6amEPko7EYcqmiqvXLzkuAfAhp2NMgCstEAD3uhF7JUITePgx2Z-"/>
+</div>
+<span class="text-secondary font-bold text-lg">+</span>
+<div class="flex-shrink-0 w-20 h-20 rounded-lg bg-surface-container-low p-2 flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain" data-alt="Apple original 30W USB-C compact GaN fast power adapter white clean minimalist studio product shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3f835CPO1xWSNFsT5n-joF-JwyX6QKhi1b-dUkMdDoiAUNY63ekmQYh_njSJEc-JD-3Qq4qzgd_-9svIGqnNylDn7G3sYJkotB79W2vQq0ClAuLPWCUiv3NLqET3Z_Crtgq0nhxY9G8wuq9YmL__v_Oh-Kl3o4MKJhX4kk7X1AIWRF-YzW7acLVGUy8K7VlPszwnOOwJNuwFyj_4sAwiVgtbeDpkSPDrQTFYl4WUN"/>
+</div>
+<span class="text-secondary font-bold text-lg">+</span>
+<div class="flex-shrink-0 w-20 h-20 rounded-lg bg-surface-container-low p-2 flex items-center justify-center shadow-sm">
+<img class="w-full h-full object-contain" data-alt="Official Apple clear MagSafe protective casing with built-in magnetic charging coil alignment ring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1HTRuytXr-1WHLGl6yVmnJ8axBPqvwif-h4Pp7u1dXDjHou_lLTdul6c_-u-Cu4eUJkuyB1J1Tg8jA3NHFtfSZ7Ie3P1cGgwGsnXXGusKGJe_5ax0EymsDESrWjbOBWENk8hLv3Z76K4V4S2hJfDcVe8VTpKM7tBdVXb1lfKYpGtmurn4uwKiHM4v7ueQ7WFeKlN_ft6oZmCIUyfxbeL7MvS2H9YhpModo_kNICzA"/>
+</div>
+</div>
+<!-- Bundle Breakdown Checklist -->
+<div class="flex flex-col gap-2 pt-1 font-body-sm text-body-sm">
+<label class="flex items-center gap-2 text-on-surface cursor-pointer select-none">
+<input checked="" class="accent-primary w-4 h-4 rounded" disabled="" type="checkbox"/>
+<span>This iPhone 16 Pro Max 256GB (<strong class="text-primary">5,199 SAR</strong>)</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface cursor-pointer select-none">
+<input checked="" class="accent-primary w-4 h-4 rounded" id="bundleItem1" onchange="updateBundleTotal()" type="checkbox"/>
+<span>Apple 30W USB-C Power Adapter (<strong class="text-secondary">169 SAR</strong>)</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface cursor-pointer select-none">
+<input checked="" class="accent-primary w-4 h-4 rounded" id="bundleItem2" onchange="updateBundleTotal()" type="checkbox"/>
+<span>Apple Clear MagSafe Case with Camera Control (<strong class="text-secondary">219 SAR</strong>)</span>
+</label>
+</div>
+<!-- Bundle Add CTA -->
+<div class="pt-2 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] text-secondary">Total Bundle Price</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="bundleTotalDisplay">5,547 SAR</span>
+<span class="font-body-sm text-body-sm text-secondary line-through">5,587 SAR</span>
+</div>
+</div>
+<button class="px-4 h-11 rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 active:scale-95" onclick="triggerBundleToast()">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Add 3 Items</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Deep Dive Information Accordions -->
+<div class="px-margin-sm mt-space-lg flex flex-col gap-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Product Details &amp; Assurances</h2>
+<!-- Accordion 1: Technical Specs -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all">
+<button class="w-full p-4 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('specsAccordion', 'specsIcon')">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">memory</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Technical Specifications</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="specsIcon">expand_more</span>
+</button>
+<div class="px-4 pb-4 hidden flex-col gap-3" id="specsAccordion">
+<div class="grid grid-cols-2 gap-2 pt-1 font-body-sm text-body-sm">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="text-secondary text-[11px] font-semibold uppercase">Processor</span>
+<span class="font-bold text-on-surface mt-0.5">A18 Pro Bionic</span>
+<span class="text-secondary text-[11px]">6-core CPU, 6-core GPU, 16-core NPU</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="text-secondary text-[11px] font-semibold uppercase">Super Retina XDR</span>
+<span class="font-bold text-on-surface mt-0.5">6.9-inch OLED</span>
+<span class="text-secondary text-[11px]">ProMotion 120Hz, 2000 nits Peak</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="text-secondary text-[11px] font-semibold uppercase">Camera Optics</span>
+<span class="font-bold text-on-surface mt-0.5">48MP Fusion Pro</span>
+<span class="text-secondary text-[11px]">5x Optical Telephoto, 48MP Ultra-wide</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="text-secondary text-[11px] font-semibold uppercase">Construction</span>
+<span class="font-bold text-on-surface mt-0.5">Grade 5 Titanium</span>
+<span class="text-secondary text-[11px]">Ceramic Shield Front, Textured Back</span>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container text-on-surface-variant font-body-sm text-[12px] flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">bolt</span>
+<span>USB-C with USB 3 speeds up to 10Gb/s for direct 4K ProRes external recording.</span>
+</div>
+</div>
+</div>
+<!-- Accordion 2: Shipping & GCC Warranty -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all">
+<button class="w-full p-4 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('shippingAccordion', 'shippingIcon')">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">local_shipping</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Shipping &amp; GCC Warranty Policy</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="shippingIcon">expand_more</span>
+</button>
+<div class="px-4 pb-4 hidden flex-col gap-2 font-body-sm text-body-sm text-secondary" id="shippingAccordion">
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5 text-on-surface">
+<div class="flex items-center gap-1.5 font-label-md font-bold text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+            Official 2-Year Saudi Arabia Warranty
+          </div>
+<p class="text-body-sm text-secondary leading-relaxed">
+            All devices sold through MerchantOS are genuine GCC specifications with CITC approval, valid at Apple Authorized Service Providers (Arab Computers, Aleph, and Jarir) across the Kingdom.
+          </p>
+</div>
+<div class="mt-2 flex flex-col gap-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">schedule</span>
+<span><strong>Riyadh Express:</strong> Delivery in 3-5 hours on orders before 6:00 PM.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">pin_drop</span>
+<span><strong>Jeddah, Dammam &amp; Nationwide:</strong> 24-48 hours via premium temperature-controlled fleet.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 3: Verified Reviews -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden transition-all">
+<button class="w-full p-4 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('reviewsAccordion', 'reviewsIcon')">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">reviews</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Customer Reviews (412)</span>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="reviewsIcon">expand_more</span>
+</button>
+<div class="px-4 pb-4 hidden flex-col gap-3" id="reviewsAccordion">
+<!-- Review score breakdown -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-xl text-[28px] font-bold text-on-surface leading-tight">4.9</span>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary mt-0.5">97% would recommend</span>
+</div>
+<div class="w-1/2 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-[11px] text-secondary">
+<span>5★</span>
+<div class="flex-1 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="w-[92%] h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary">
+<span>4★</span>
+<div class="flex-1 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="w-[6%] h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary">
+<span>3★</span>
+<div class="flex-1 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="w-[2%] h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sample verified review -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-on-primary-fixed text-[11px]">TA</span>
+<span class="font-label-md font-bold text-on-surface">Tariq Al-Harbi</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-primary font-label-sm text-[9px]">Verified Buyer</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary">2 days ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Delivered to Al Malqa Riyadh in under 4 hours. Titanium feels lighter than the 15 Pro Max and the Camera Control tactile button is responsive. Genuine GCC box with dual eSIM/nano SIM.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast (Interactive Delight) -->
+<div class="fixed top-20 inset-x-4 z-50 transform -translate-y-28 opacity-0 transition-all duration-300 pointer-events-none" id="cartToast">
+<div class="p-3.5 rounded-xl bg-primary text-on-primary shadow-xl flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-lg font-bold leading-tight">Added to Shopping Bag</span>
+<span class="font-body-sm text-[12px] text-on-primary-container" id="toastSubtext">Apple iPhone 16 Pro Max (256 GB)</span>
+</div>
+</div>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm font-bold shadow-sm" href="#">
+        Checkout
+      </a>
+</div>
+</div>
+<!-- Sticky Bottom Buy Bar (Always reachable on mobile) -->
+<div class="fixed bottom-16 inset-x-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_-4px_16px_rgba(0,0,0,0.06)] px-margin-sm py-2.5 flex items-center justify-between gap-3 max-w-[430px] mx-auto">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[11px] text-secondary truncate" id="stickySubhead">256GB • Natural Titanium</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-extrabold" id="stickyPriceDisplay">5,199 SAR</span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<button class="w-full max-w-[200px] h-11 rounded-lg bg-primary hover:bg-primary-container active:scale-95 text-on-primary font-label-lg text-label-lg font-bold shadow-md flex items-center justify-center gap-1.5 transition-all" onclick="triggerCartToast()">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>Add to Bag</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  let currentStorage = '256 GB';
+  let currentColor = 'Natural Titanium';
+  let basePrice = 5199;
+  let quantity = 1;
+
+  function selectStorage(btn, price, capacity) {
+    currentStorage = capacity;
+    basePrice = price;
+
+    document.querySelectorAll('.storage-btn').forEach(el => {
+      el.classList.remove('bg-surface-container-lowest', 'shadow-md', 'text-on-surface');
+      el.classList.add('bg-surface-container-low', 'shadow-sm', 'text-on-surface-variant');
+    });
+
+    btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    btn.classList.add('bg-surface-container-lowest', 'shadow-md', 'text-on-surface');
+
+    const formattedPrice = (price * quantity).toLocaleString() + ' SAR';
+    document.getElementById('mainPriceDisplay').innerText = formattedPrice;
+    document.getElementById('stickyPriceDisplay').innerText = formattedPrice;
+    document.getElementById('stickySubhead').innerText = `${capacity} • ${currentColor}`;
+    updateBundleTotal();
+  }
+
+  function selectColor(btn, colorName) {
+    currentColor = colorName;
+    document.getElementById('finishLabel').innerText = colorName;
+    document.getElementById('stickySubhead').innerText = `${currentStorage} • ${colorName}`;
+
+    document.querySelectorAll('.color-swatch').forEach(el => {
+      el.classList.remove('shadow-md', 'opacity-100');
+      el.classList.add('opacity-70', 'shadow-sm');
+      const innerCheck = el.querySelector('.material-symbols-outlined');
+      if (innerCheck) innerCheck.remove();
+    });
+
+    btn.classList.remove('opacity-70');
+    btn.classList.add('opacity-100', 'shadow-md');
+    
+    const circle = btn.querySelector('span');
+    if (circle && !circle.querySelector('.material-symbols-outlined')) {
+      const check = document.createElement('span');
+      check.className = 'material-symbols-outlined text-[16px] text-white';
+      check.innerText = 'check';
+      circle.appendChild(check);
+    }
+  }
+
+  function setThumb(index) {
+    const dots = document.querySelectorAll('#dotsContainer span');
+    dots.forEach((dot, idx) => {
+      if (idx === index) {
+        dot.className = 'w-5 h-1.5 rounded-full bg-primary transition-all duration-300';
+      } else {
+        dot.className = 'w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300';
+      }
+    });
+
+    const thumbs = document.querySelectorAll('.thumb-btn');
+    thumbs.forEach((thumb, idx) => {
+      if (idx === index) {
+        thumb.classList.remove('opacity-60', 'shadow-sm');
+        thumb.classList.add('opacity-100', 'shadow-md');
+      } else {
+        thumb.classList.remove('opacity-100', 'shadow-md');
+        thumb.classList.add('opacity-60', 'shadow-sm');
+      }
+    });
+  }
+
+  function updateQty(change) {
+    quantity = Math.max(1, Math.min(5, quantity + change));
+    document.getElementById('qtyCounter').innerText = quantity;
+    const formattedPrice = (basePrice * quantity).toLocaleString() + ' SAR';
+    document.getElementById('mainPriceDisplay').innerText = formattedPrice;
+    document.getElementById('stickyPriceDisplay').innerText = formattedPrice;
+  }
+
+  function updateBundleTotal() {
+    let total = basePrice;
+    const chk1 = document.getElementById('bundleItem1');
+    const chk2 = document.getElementById('bundleItem2');
+    if (chk1 && chk1.checked) total += 169;
+    if (chk2 && chk2.checked) total += 219;
+    document.getElementById('bundleTotalDisplay').innerText = total.toLocaleString() + ' SAR';
+  }
+
+  function toggleAccordion(panelId, iconId) {
+    const panel = document.getElementById(panelId);
+    const icon = document.getElementById(iconId);
+    if (!panel || !icon) return;
+
+    if (panel.classList.contains('hidden')) {
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      panel.classList.add('hidden');
+      panel.classList.remove('flex');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  function triggerCartToast() {
+    const toast = document.getElementById('cartToast');
+    const subtext = document.getElementById('toastSubtext');
+    if (subtext) {
+      subtext.innerText = `Apple iPhone 16 Pro Max (${currentStorage}, ${currentColor}) × ${quantity}`;
+    }
+    toast.classList.remove('-translate-y-28', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('-translate-y-28', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2800);
+  }
+
+  function triggerBundleToast() {
+    const toast = document.getElementById('cartToast');
+    const subtext = document.getElementById('toastSubtext');
+    if (subtext) {
+      subtext.innerText = `iPhone 16 Pro Max + 30W Adapter + MagSafe Case added!`;
+    }
+    toast.classList.remove('-translate-y-28', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('-translate-y-28', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2800);
+  }
+
+  // Favorite micro-interaction
+  const favBtn = document.getElementById('favBtn');
+  const favIcon = document.getElementById('favIcon');
+  let isFav = false;
+  if (favBtn && favIcon) {
+    favBtn.addEventListener('click', () => {
+      isFav = !isFav;
+      if (isFav) {
+        favIcon.innerText = 'favorite';
+        favIcon.style.fontVariationSettings = "'FILL' 1";
+        favBtn.classList.add('text-error');
+      } else {
+        favIcon.innerText = 'favorite_border';
+        favIcon.style.fontVariationSettings = "'FILL' 0";
+        favBtn.classList.remove('text-error');
+      }
+    });
+  }
+
+  // Share action fallback
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Apple iPhone 16 Pro Max | MerchantOS KSA',
+          text: 'Official GCC Spec iPhone 16 Pro Max 256GB available now.',
+          url: window.location.href,
+        }).catch(() => {});
+      } else {
+        triggerCartToast();
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl pb-safe shadow-[0_-2px_12px_rgba(11,28,48,0.06)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 transition-colors text-primary font-semibold" data-path="storefront-home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-md text-label-md leading-none">Home</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="catalog-browse" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-label-md text-label-md leading-none">Catalog</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite_border</span><span class="font-label-md text-label-md leading-none">Wishlist</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="orders" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-md text-label-md leading-none">Orders</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[22px]">person_outline</span><span class="font-label-md text-label-md leading-none">Account</span></a></div></nav></body></html>

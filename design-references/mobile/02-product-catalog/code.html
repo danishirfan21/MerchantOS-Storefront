@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-dim": "#cbdbf5", "surface-container-lowest": "#ffffff", "on-primary-container": "#f5fff7", "on-error": "#ffffff", "primary-fixed": "#85f8c4", "primary-fixed-dim": "#68dba9", "tertiary-container": "#00855b", "background": "#f8f9ff", "on-primary-fixed-variant": "#005137", "on-tertiary-container": "#f5fff6", "tertiary": "#006947", "on-background": "#0b1c30", "secondary": "#565e74", "primary-container": "#00855d", "on-surface-variant": "#3d4a42", "secondary-fixed": "#dae2fd", "surface-container-low": "#eff4ff", "on-secondary": "#ffffff", "inverse-surface": "#213145", "outline": "#6d7a72", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "on-secondary-container": "#5c647a", "on-tertiary-fixed": "#002113", "on-secondary-fixed": "#131b2e", "inverse-on-surface": "#eaf1ff", "tertiary-fixed-dim": "#4edea3", "on-primary-fixed": "#002114", "on-surface": "#0b1c30", "outline-variant": "#bccac0", "on-primary": "#ffffff", "on-error-container": "#93000a", "secondary-container": "#dae2fd", "inverse-primary": "#68dba9", "surface-tint": "#006c4a", "secondary-fixed-dim": "#bec6e0", "on-tertiary-fixed-variant": "#005236", "surface-variant": "#d3e4fe", "surface": "#f8f9ff", "surface-bright": "#f8f9ff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#3f465c", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "primary": "#006948", "on-tertiary": "#ffffff", "tertiary-fixed": "#6ffbbe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-sm": "1rem", "space-xl": "2.5rem", "gutter-lg": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter-sm": "1rem", "margin-lg": "4rem" }, fontFamily: { "display-hero-mobile": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "price-lg": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "display-hero": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "price-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Plus Jakarta Sans"] }, fontSize: { "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}], "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}], "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "price-lg": ["24px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}], "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.025em", "fontWeight": "800"}], "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}], "price-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "700"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700"}], "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "600"}], "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-sm flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-[0_2px_8px_rgba(0,105,72,0.25)]"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">Merchant<span class="text-primary">OS</span></span><span class="font-label-sm text-[9px] uppercase tracking-wider text-secondary leading-tight mt-0.5">Storefront KSA</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Search Catalog" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Wishlist" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span></a><a aria-label="Shopping Cart" class="w-11 h-11 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] px-1 bg-primary text-on-primary font-label-sm text-[10px] rounded-full flex items-center justify-center leading-none font-bold">3</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-24"><div class="flex flex-col w-full">
+<!-- Toast Notification Container -->
+<div class="fixed top-20 inset-x-4 z-50 transform -translate-y-28 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl" id="cartToast">
+<span class="material-symbols-outlined text-primary-fixed text-[22px]">check_circle</span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md truncate" id="toastMessage">Device added to cart</span>
+<span class="font-body-sm text-body-sm text-surface-variant opacity-80">Riyadh &amp; Jeddah 2h dispatch available</span>
+</div>
+</div>
+<!-- Breadcrumb & Page Scope Header -->
+<section class="px-margin-sm pt-space-sm pb-space-xs flex flex-col gap-space-xs">
+<nav aria-label="Breadcrumb" class="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap py-0.5">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">home</span>
+<span>Home</span>
+</a>
+<span class="text-outline-variant font-label-sm text-label-sm">/</span>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Smartphones</a>
+<span class="text-outline-variant font-label-sm text-label-sm">/</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Flagship Phones</span>
+</nav>
+<div class="flex flex-col gap-1.5 mt-1">
+<div class="flex items-center justify-between gap-space-sm">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight">Flagship Smartphones</h1>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface text-label-sm font-label-sm shrink-0 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>48 models</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed/20 text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Official GCC 2-Year Warranty</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>Same-Day Riyadh</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter & Sort Control Bar -->
+<section class="sticky top-16 z-30 bg-surface/95 backdrop-blur-md px-margin-sm py-2.5 flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2">
+<!-- Filter Trigger Button -->
+<button class="flex-1 h-10 px-3 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm active:scale-95 transition-all flex items-center justify-between" id="openFilterBtn">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">tune</span>
+<span class="font-label-md text-label-md">Filters</span>
+</div>
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[10px] flex items-center justify-center font-bold">3</span>
+</button>
+<!-- Sort Selector Dropdown Simulator -->
+<div class="relative flex-1">
+<button class="w-full h-10 px-3 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm active:scale-95 transition-all flex items-center justify-between" id="sortToggleBtn">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[18px] text-secondary">sort</span>
+<span class="font-label-md text-label-md truncate" id="currentSortLabel">Featured</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-secondary">expand_more</span>
+</button>
+<!-- Sort Dropdown Menu -->
+<div class="hidden absolute top-11 right-0 left-0 bg-surface-container-lowest rounded-xl shadow-xl py-1.5 z-40 flex-col" id="sortMenu">
+<button class="sort-option px-3.5 py-2 text-left font-label-md text-label-md text-primary font-semibold hover:bg-surface-container-low transition-colors flex items-center justify-between" data-sort="Featured">
+<span>Featured First</span>
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<button class="sort-option px-3.5 py-2 text-left font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors" data-sort="Price: Low to High">Price: Low to High</button>
+<button class="sort-option px-3.5 py-2 text-left font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors" data-sort="Price: High to Low">Price: High to Low</button>
+<button class="sort-option px-3.5 py-2 text-left font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors" data-sort="Newest Arrivals">Newest Arrivals</button>
+</div>
+</div>
+</div>
+<!-- Active Filter Chips Scrollable Track -->
+<div class="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap py-0.5 no-scrollbar" id="chipContainer">
+<div class="filter-chip inline-flex items-center gap-1 pl-2.5 pr-1.5 py-1 rounded-full bg-surface-container-low text-on-surface text-label-sm font-label-sm shadow-sm transition-all hover:bg-surface-container">
+<span>Apple</span>
+<button class="remove-chip w-4 h-4 rounded-full flex items-center justify-center hover:bg-surface-variant text-secondary">
+<span class="material-symbols-outlined text-[12px]">close</span>
+</button>
+</div>
+<div class="filter-chip inline-flex items-center gap-1 pl-2.5 pr-1.5 py-1 rounded-full bg-surface-container-low text-on-surface text-label-sm font-label-sm shadow-sm transition-all hover:bg-surface-container">
+<span>In Stock Only</span>
+<button class="remove-chip w-4 h-4 rounded-full flex items-center justify-center hover:bg-surface-variant text-secondary">
+<span class="material-symbols-outlined text-[12px]">close</span>
+</button>
+</div>
+<div class="filter-chip inline-flex items-center gap-1 pl-2.5 pr-1.5 py-1 rounded-full bg-surface-container-low text-on-surface text-label-sm font-label-sm shadow-sm transition-all hover:bg-surface-container">
+<span>5G Capable</span>
+<button class="remove-chip w-4 h-4 rounded-full flex items-center justify-center hover:bg-surface-variant text-secondary">
+<span class="material-symbols-outlined text-[12px]">close</span>
+</button>
+</div>
+<button class="inline-flex items-center px-2 py-1 rounded-full text-secondary hover:text-error text-label-sm font-label-sm transition-colors" id="clearAllChips">
+<span>Clear All</span>
+</button>
+</div>
+</section>
+<!-- 2-Column Product Grid -->
+<section class="px-margin-sm py-space-sm">
+<div class="grid grid-cols-2 gap-space-sm" id="productGrid">
+<!-- Card 1: iPhone 16 Pro Max -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="iPhone 16 Pro Max">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-primary-fixed/30 text-on-primary-fixed-variant font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px] text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>2-Yr GCC</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="Official studio shot of Apple iPhone 16 Pro Max in Desert Titanium resting on a pristine minimal podium with soft studio rim reflections, crisp metallic edges, and clean modern aesthetic in Saudi luxury retail style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw_nDwTN75znX0J-W8yzX5t-xx8i-WzBmc3zxqgF-IG74hqcT2piNjZ-HTdtY49N9SLVb-hdUoKXWaOXBI6Xy3LV3bEq0ScRDZ1Myefl9g1jseZJTPzQq2PJ7VfFseVS6V4V7ltsx62LUOOa4EdygsicMd83gW7PL5XkPjDTZi36tOn8TfCEI0HfBVmQxFtrz8b74zmbWQzwXAWLNKpN7DgiS39U5vSdla0FI493J5"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">Apple</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">iPhone 16 Pro Max</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Desert Titanium • 256GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">5,199 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Inc. 15% VAT</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="iPhone 16 Pro Max 256GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Galaxy S24 Ultra -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="Galaxy S24 Ultra">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">headphones</span>
+<span>Free Buds FE</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="Samsung Galaxy S24 Ultra in Titanium Gray alongside its integrated S Pen stylus, isolated on luminous neutral tabletop with delicate light refraction, high definition consumer tech presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8jJc_LJ_7uOOVQNPAM3Ji1-LVD5VSdr0pUJiIbmdqKd9m1UPE8Y9SjZuFk2REeHTnEWGeubVhan34dkdiLYo9AAHNWkeiZ_IWgMrFPUllXeS2v0YYZ89CM4TGAQ_DffHTJwm3DxQyHx9td008gyM6488l1BcdeHIU-NPmKmvh2qF7_XiWrhYJ9E27NvjqMy5d3z_BTBtzydRkx7RMMGelN6-x7AQf3i9RPK2A2quL"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">Samsung</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">Galaxy S24 Ultra</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Titanium Gray • 512GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">4,699 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Tabby 1,174 SAR/mo</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="Galaxy S24 Ultra 512GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Pixel 9 Pro XL -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="Pixel 9 Pro XL">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">warning</span>
+<span>4 left</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="Google Pixel 9 Pro XL in Porcelain white matte glass finish showing distinctive horizontal camera visor bar, angled hero studio illumination on soft ivory backdrop, elegant architectural framing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdN_HrZnxrNdek8ERxJiXm9BwpbKo29DcZ1CjOiqjFDtlKPCC3c1H6tcLfVvh5GBj6xyWYpH1o4xibFysGcOkpMqXXIyz3lxICZdUuzsDo8nmRfqTpT5WNGqb5mQssMrsWFz_hrNTqRiF6WGJcmg-6abczU1dNRwuEZmI_bSWgfr8NUhXzatFX9C_OSZVWqSmikpnbAJLLK_JXb8E0bWGZHW9L8uruacYgdHVn1nPY"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">Google</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">Pixel 9 Pro XL</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Porcelain • 256GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">4,299 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Free Google AI Pro</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="Pixel 9 Pro XL 256GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+<!-- Card 4: iPhone 16 Pro -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="iPhone 16 Pro">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-primary-fixed/20 text-primary font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">local_shipping</span>
+<span>Express</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="Apple iPhone 16 Pro in Natural Titanium finish centered in dynamic three-quarter view, highlighting titanium brushed frame bevel and triple camera lens cluster on light gray surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoomwbBLMFbpnpbdB7Icf4CT5lbbyCvuBe9rVLk_OzkFau7U5B3HexuEvxwApDBJ9jHSX8wu71fvWM85lt8tVxyXdBr6DPF0f57QBvXZSxxG0qS9zXi8JzeTG72ht9Vt_wABvp6B52CbOqOUZUhrPtboKFknzLpeC3KgDXxAt-7fPHRtxk6LUuLZrCFVMvzm2Qsv9WWPjT-Qt9CPyp-rlE7fCGfhn-1LmQ4NelSARS"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">Apple</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">iPhone 16 Pro</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Natural Titanium • 128GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">4,299 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Tamara 4 Payments</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="iPhone 16 Pro 128GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+<!-- Card 5: Galaxy Z Fold6 -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="Galaxy Z Fold6">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">auto_awesome</span>
+<span>Foldable</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="Samsung Galaxy Z Fold6 in refined Navy Blue semi-unfolded in flex mode, showing the sleek hinge mechanism and pristine dual AMOLED screens in crisp studio lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlrwXC8Hq-CI-lPtvld5jTUyYIG2nDNEPOCEOjzqwz33BCvSSNvwE8snPqrkP2lrUkbWnaoB_31hyMm98xFMorozwj8nVvl0IlfukVFMuDrSR9wUqL-lyEv4PCNrA4WNbOh9U9zOtKFA1naTbW8B6_EIo1s-xsYeEzy629vuManJ7FOIIY5tx80BlbWmMgvq-Xc5V1xGjqPcu423sPa-6ErmJCGZHuo_1L83g-W8eJ"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">Samsung</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">Galaxy Z Fold6</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Navy Blue • 512GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">6,499 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Samsung Care+ incl.</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="Galaxy Z Fold6 512GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+<!-- Card 6: OnePlus 12 5G -->
+<article class="product-card flex flex-col justify-between bg-surface-container-lowest rounded-xl p-2.5 shadow-sm hover:shadow-md transition-all duration-200 relative group" data-title="OnePlus 12 5G">
+<div>
+<!-- Image isolation container -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-2 mb-2">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-primary-fixed/20 text-on-primary-fixed-variant font-label-sm text-[10px] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">bolt</span>
+<span>100W Fast</span>
+</span>
+<button class="wishlist-btn absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105" data-alt="OnePlus 12 5G in Emerald Green featuring the Hasselblad circular camera module and luxury curved ceramic glass backplate, isolated on high key bright backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFG3aqe3CLDwBtiFuKehp9h5Lc74kLPM55xNOgBsVdNLmaDRLgr-FTxx57JZ2dFM4t1vb8xuMutEzgADAO9w1kVRbum68_pa5cjeGizmU881DxwHuo-zcR_Zs8w_uKplKfKkjbwFZ0C8RhRKQXWshsgbbHTSo1c8j7ct9sfff-L5hI6wPyuIbV8hpMmB31HYEkqMHFMYH3w1aVpaQFr7UJ4qoUsSmtXHEkSLa9ufBl"/>
+</div>
+<!-- Product meta -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-[10px] text-secondary tracking-wide uppercase">OnePlus</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-1">OnePlus 12 5G</h2>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1">Emerald Green • 512GB</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 flex flex-col gap-2">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex flex-col">
+<span class="font-price-md text-price-md text-primary leading-tight font-bold">3,299 <span class="font-label-sm text-[10px] font-semibold text-secondary">SAR</span></span>
+<span class="font-label-sm text-[9px] text-secondary">Charger in box</span>
+</div>
+</div>
+<button class="add-to-cart-btn w-full h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 active:scale-95 shadow-sm hover:bg-tertiary transition-all" data-name="OnePlus 12 512GB">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Add</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Pagination & Progress Indicator -->
+<div class="mt-space-lg flex flex-col items-center gap-space-sm">
+<div class="w-full flex flex-col items-center gap-1.5">
+<div class="flex items-center justify-between w-full text-secondary font-label-sm text-label-sm px-1">
+<span>Showing 6 of 48 devices</span>
+<span class="font-semibold text-on-surface">12.5%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 w-[12.5%]"></div>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-2 active:scale-98 transition-all" id="loadMoreBtn">
+<span class="material-symbols-outlined text-[20px] text-primary" id="loadSpinner">cached</span>
+<span id="loadText">Load More Flagships (42 remaining)</span>
+</button>
+</div>
+</section>
+<!-- Saudi Tech Concierge Banner -->
+<section class="px-margin-sm py-space-sm mb-space-sm">
+<div class="bg-gradient-to-br from-surface-container to-surface-container-high rounded-2xl p-space-md shadow-sm relative overflow-hidden flex flex-col gap-3">
+<!-- Ambient decorative gradient pulse -->
+<div class="absolute -right-6 -bottom-6 w-28 h-28 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-11 h-11 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Saudi Tech Concierge</h3>
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim ring-2 ring-primary"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-relaxed">
+            Unsure between Titanium and Gorilla Armor? Connect live with certified Riyadh tech specialists in Arabic or English.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 relative z-10 pt-1">
+<button class="flex-1 h-10 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm flex items-center justify-center gap-1.5 hover:bg-surface-bright active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>Start Instant Chat</span>
+</button>
+<button class="h-10 px-3.5 rounded-lg bg-primary/10 text-primary font-label-md text-label-md flex items-center justify-center gap-1 hover:bg-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>Call 24/7</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-secondary font-label-sm text-[10px] pt-1 border-none">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">verified</span>
+<span>Average response: &lt;45s</span>
+</span>
+<span>CITC Licensed Storefront</span>
+</div>
+</div>
+</section>
+<!-- Interactive Bottom Drawer for Filters (Off-canvas) -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="filterDrawerBackdrop"></div>
+<aside class="fixed inset-x-0 bottom-0 max-h-[751px] bg-surface-container-lowest rounded-t-3xl shadow-2xl z-50 transform translate-y-full transition-transform duration-300 flex flex-col overflow-hidden pb-safe" id="filterDrawer">
+<!-- Header -->
+<div class="px-space-md pt-space-md pb-space-sm flex items-center justify-between bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">Filter Devices</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed/30 text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">3 active</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface" id="closeFilterBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Scrollable content -->
+<div class="flex-1 overflow-y-auto px-space-md py-space-xs flex flex-col gap-space-lg">
+<!-- Price Range Slider module -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Price Range (SAR)</span>
+<span class="font-label-md text-label-md text-primary font-bold">3,000 - 7,000 SAR</span>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input class="w-full accent-primary h-2 bg-surface-container-high rounded-lg cursor-pointer" max="8000" min="2000" type="range" value="7000"/>
+</div>
+</div>
+<!-- Brand filter section -->
+<div class="flex flex-col gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Brand</span>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-primary-fixed/20 text-on-primary-fixed-variant cursor-pointer">
+<span class="font-label-md text-label-md font-semibold">Apple</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_box</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface cursor-pointer">
+<span class="font-label-md text-label-md">Samsung</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box_outline_blank</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface cursor-pointer">
+<span class="font-label-md text-label-md">Google</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box_outline_blank</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface cursor-pointer">
+<span class="font-label-md text-label-md">OnePlus</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_box_outline_blank</span>
+</label>
+</div>
+</div>
+<!-- Storage Size section -->
+<div class="flex flex-col gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Storage Capacity</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-label-md">128 GB</button>
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-sm">256 GB</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-label-md">512 GB</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-label-md">1 TB</button>
+</div>
+</div>
+<!-- Stock & Delivery switches -->
+<div class="flex flex-col gap-3 pb-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Availability &amp; Speed</span>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+<span class="font-label-md text-label-md text-on-surface">Ready Stock (In KSA)</span>
+</div>
+<div class="w-10 h-6 bg-primary rounded-full relative flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 bg-on-primary rounded-full ml-auto shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">rocket_launch</span>
+<span class="font-label-md text-label-md text-on-surface">Same-Day Riyadh Courier</span>
+</div>
+<div class="w-10 h-6 bg-surface-container-high rounded-full relative flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 bg-on-primary rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-space-md bg-surface-container-lowest shadow-lg flex items-center gap-space-sm">
+<button class="h-12 px-4 rounded-xl bg-surface-container-low text-on-surface font-label-lg text-label-lg" id="resetFiltersInDrawer">Reset</button>
+<button class="flex-1 h-12 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-tertiary transition-all" id="applyFiltersInDrawer">Show 48 Results</button>
+</div>
+</aside>
+</div>
+<script>
+  (function initFlagshipCatalog() {
+    // Drawer interactions
+    const filterDrawer = document.getElementById('filterDrawer');
+    const backdrop = document.getElementById('filterDrawerBackdrop');
+    const openBtn = document.getElementById('openFilterBtn');
+    const closeBtn = document.getElementById('closeFilterBtn');
+    const applyBtn = document.getElementById('applyFiltersInDrawer');
+    const resetBtn = document.getElementById('resetFiltersInDrawer');
+
+    function openDrawer() {
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      filterDrawer.classList.remove('translate-y-full');
+    }
+
+    function closeDrawer() {
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      filterDrawer.classList.add('translate-y-full');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+    if (applyBtn) applyBtn.addEventListener('click', closeDrawer);
+    if (resetBtn) resetBtn.addEventListener('click', closeDrawer);
+
+    // Sort dropdown micro-interaction
+    const sortBtn = document.getElementById('sortToggleBtn');
+    const sortMenu = document.getElementById('sortMenu');
+    const sortLabel = document.getElementById('currentSortLabel');
+    const sortOptions = document.querySelectorAll('.sort-option');
+
+    if (sortBtn && sortMenu) {
+      sortBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sortMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', () => {
+        if (!sortMenu.classList.contains('hidden')) {
+          sortMenu.classList.add('hidden');
+        }
+      });
+
+      sortOptions.forEach((opt) => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const val = opt.getAttribute('data-sort');
+          if (sortLabel) sortLabel.textContent = val;
+          sortMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Toast and Add-to-cart micro-feedback
+    const toast = document.getElementById('cartToast');
+    const toastMsg = document.getElementById('toastMessage');
+    const addBtns = document.querySelectorAll('.add-to-cart-btn');
+    let toastTimeout;
+
+    function showToast(text) {
+      if (toastMsg) toastMsg.textContent = text;
+      if (toast) {
+        toast.classList.remove('-translate-y-28', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('-translate-y-28', 'opacity-0');
+        }, 2600);
+      }
+    }
+
+    addBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const title = btn.getAttribute('data-name') || 'Item';
+        btn.classList.add('scale-90');
+        setTimeout(() => btn.classList.remove('scale-90'), 150);
+        showToast(title + ' added to cart');
+      });
+    });
+
+    // Wishlist heart toggle
+    const wishlistBtns = document.querySelectorAll('.wishlist-btn');
+    wishlistBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          if (icon.textContent === 'favorite_border') {
+            icon.textContent = 'favorite';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            btn.classList.add('text-error');
+          } else {
+            icon.textContent = 'favorite_border';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            btn.classList.remove('text-error');
+          }
+        }
+      });
+    });
+
+    // Chip removal interaction
+    const removeChipBtns = document.querySelectorAll('.remove-chip');
+    removeChipBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const chip = btn.closest('.filter-chip');
+        if (chip) chip.remove();
+      });
+    });
+
+    const clearAll = document.getElementById('clearAllChips');
+    if (clearAll) {
+      clearAll.addEventListener('click', () => {
+        const chips = document.querySelectorAll('.filter-chip');
+        chips.forEach((c) => c.remove());
+        clearAll.remove();
+      });
+    }
+
+    // Load More micro-interaction
+    const loadBtn = document.getElementById('loadMoreBtn');
+    const loadSpinner = document.getElementById('loadSpinner');
+    const loadText = document.getElementById('loadText');
+
+    if (loadBtn && loadSpinner && loadText) {
+      loadBtn.addEventListener('click', () => {
+        loadSpinner.classList.add('animate-spin');
+        loadText.textContent = 'Fetching remaining models...';
+        setTimeout(() => {
+          loadSpinner.classList.remove('animate-spin');
+          loadText.textContent = 'All 48 Flagships Loaded';
+          loadBtn.setAttribute('disabled', 'true');
+          loadBtn.classList.add('opacity-70');
+        }, 900);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-lowest/95 backdrop-blur-xl pb-safe shadow-[0_-2px_12px_rgba(11,28,48,0.06)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="storefront-home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-md text-label-md leading-none">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 transition-colors text-primary font-semibold" data-path="catalog-browse" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-label-md text-label-md leading-none">Catalog</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite_border</span><span class="font-label-md text-label-md leading-none">Wishlist</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="orders" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-md text-label-md leading-none">Orders</span></a><a class="flex flex-col items-center justify-center min-w-[60px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="account" href="#"><span class="material-symbols-outlined text-[22px]">person_outline</span><span class="font-label-md text-label-md leading-none">Account</span></a></div></nav></body></html>
