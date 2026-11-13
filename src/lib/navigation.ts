@@ -10,17 +10,23 @@ export type NavItem = {
 export const HOME_HREF = "/";
 
 export const categoryNav: NavItem[] = [
-  { label: "Smartphones" },
-  { label: "Computing" },
-  { label: "Audio" },
-  { label: "Wearables" },
+  { label: "All products", href: "/products" },
+  { label: "Smartphones", href: "/products?category=smartphones" },
+  { label: "Computing", href: "/products?category=laptops" },
+  { label: "Audio", href: "/products?category=audio" },
+  { label: "Wearables", href: "/products?category=wearables" },
   { label: "Offers" },
 ];
 
 export const footerGroups: Array<{ title: string; items: NavItem[] }> = [
   {
     title: "Shop",
-    items: [{ label: "All products" }, { label: "Smartphones" }, { label: "Computing" }, { label: "Audio" }],
+    items: [
+      { label: "All products", href: "/products" },
+      { label: "Smartphones", href: "/products?category=smartphones" },
+      { label: "Computing", href: "/products?category=laptops" },
+      { label: "Audio", href: "/products?category=audio" },
+    ],
   },
   {
     title: "Customer care",

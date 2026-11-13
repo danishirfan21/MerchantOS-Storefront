@@ -32,7 +32,7 @@ export function StorefrontHeader() {
 
         <HeaderSearch withButton className="hidden min-w-0 flex-1 md:block lg:max-w-2xl" />
 
-        <div className="ms-auto flex items-center gap-1 md:ms-0">
+        <div className="ms-auto flex items-center sm:gap-1 md:ms-0">
           <IconButton label="Wishlist" disabled title={PENDING_HINT} className="max-md:hidden">
             <Heart size={22} strokeWidth={2} />
           </IconButton>

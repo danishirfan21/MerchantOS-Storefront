@@ -4,6 +4,8 @@ import type { Category } from "@/components/products/CategoryCard";
 
 /** Homepage copy and sample data. Placeholder content until the real catalogue exists. */
 
+const withHref = (c: Category): Category => ({ ...c, href: `/products?category=${c.slug}` });
+
 export const departments: Category[] = [
   { slug: "smartphones", name: "Smartphones", description: "Phones & tablets", icon: Smartphone },
   { slug: "laptops", name: "Laptops", description: "Ultrabooks & gaming", icon: Laptop },
@@ -12,7 +14,7 @@ export const departments: Category[] = [
   { slug: "gaming", name: "Gaming", description: "Consoles & accessories", icon: Gamepad2 },
   { slug: "wearables", name: "Wearables", description: "Watches & trackers", icon: Watch },
   { slug: "cameras", name: "Cameras", description: "Photo & video gear", icon: Camera },
-];
+].map(withHref);
 
 export const trustItems: Array<{ icon: LucideIcon; title: string; text: string }> = [
   { icon: Truck, title: "Delivery across the Kingdom", text: "Options shown at checkout" },

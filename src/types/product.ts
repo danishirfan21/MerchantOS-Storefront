@@ -1,7 +1,12 @@
+export type CategorySlug = "smartphones" | "laptops" | "audio" | "tvs" | "gaming" | "wearables" | "cameras";
+
 export type Product = {
   id: string;
   name: string;
   brand: string;
+  category: CategorySlug;
+  /** Storage capacity, for devices where it is a buying attribute. */
+  storage?: string;
   /** Short spec line, e.g. "256GB · Titanium". */
   spec?: string;
   /** Current price in SAR. */

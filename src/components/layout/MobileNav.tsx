@@ -62,7 +62,7 @@ export function MobileNav() {
         hidden={!open}
         className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line/30 bg-card px-(--page-gutter) pt-4 pb-6 shadow-overlay md:hidden"
       >
-        <HeaderSearch />
+        <HeaderSearch onSearched={() => setOpen(false)} />
         <nav aria-label="Categories" className="mt-5">
           <p className="mb-2 text-label-sm font-semibold uppercase text-ink-slate">Categories</p>
           <ul className="flex flex-col">

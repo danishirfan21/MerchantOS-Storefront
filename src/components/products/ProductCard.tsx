@@ -56,9 +56,9 @@ export function ProductCard({ product, actions, className }: ProductCardProps) {
         ) : null}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-4">
+      <div className="flex flex-1 flex-col gap-1.5 p-3 sm:gap-2 sm:p-4">
         <p className="text-label-sm font-semibold uppercase text-ink-slate">{product.brand}</p>
-        <h3 id={titleId} className="font-heading text-headline-sm line-clamp-2 text-ink">
+        <h3 id={titleId} className="font-heading text-body-lg font-semibold sm:text-headline-sm line-clamp-2 text-ink">
           {product.href ? (
             <Link href={product.href} className="after:absolute after:inset-0 hover:text-brand">
               {product.name}
@@ -67,7 +67,7 @@ export function ProductCard({ product, actions, className }: ProductCardProps) {
             product.name
           )}
         </h3>
-        {product.spec ? <p className="text-body-sm text-ink-slate">{product.spec}</p> : null}
+        {product.spec ? <p className="line-clamp-2 text-body-sm text-ink-slate">{product.spec}</p> : null}
         <ProductPrice price={product.price} compareAtPrice={product.compareAtPrice} className="mt-auto pt-2" />
         <StockLine product={product} />
         {actions ? <div className="relative z-10 mt-2">{actions}</div> : null}
