@@ -243,6 +243,28 @@ Kept: the page structure, order cards, product preview, summary and timeline hie
 
 ---
 
+## Live Catalogue Preview (read-only, optional)
+
+By default the storefront runs entirely on its fictional demo catalogue, exactly as described above. An optional **read-only preview** can instead read a small set of real products from the MerchantOS POS backend through a server-side request. It lives at `/catalog-preview` and `/catalog-preview/[slug]`, separate from `/products`, and is **not** purchasable.
+
+**Enabling it** (server-only environment variables, never `NEXT_PUBLIC_`):
+
+| Variable | Meaning |
+| -------- | ------- |
+| `MERCHANTOS_CATALOG_SOURCE` | `fixture` (default) or `api`. Anything else is rejected at startup. |
+| `MERCHANTOS_CATALOG_API_URL` | Origin of the POS API, required when the source is `api`. `https` only, except `http` for localhost. No credentials, path or query. |
+| `MERCHANTOS_CATALOG_API_TIMEOUT_MS` | Optional request timeout, 500 to 15000 (default 4000). |
+
+**What it does.** The page fetches the POS Storefront catalog (`GET /api/storefront/products` and `/{slug}`) on the server, parses only the documented fields, and shows names, integer-halala prices rendered as SAR, and customer-safe availability (in stock, low stock, out of stock). A banner on every preview page states that the data is live POS data, that prices **exclude VAT**, and that the products cannot be added to the cart or purchased.
+
+**What it deliberately does not do.** The demo cart, wishlist and checkout only know the fictional catalogue, so API products have no Add to cart, wishlist or checkout path. If the POS is unreachable, slow, rate limiting or returns malformed data, the preview shows an error state; it never substitutes demo products as if they were live. No staff credential, cookie, SKU, internal id or exact stock quantity reaches the browser, and no real order, payment or stock change is possible.
+
+**Security headers.** All responses carry a baseline Content Security Policy (same-origin only; `'unsafe-inline'` for scripts and styles is still required because the prerendered shell uses Next.js inline bootstrap scripts), `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options` and `Permissions-Policy`. HSTS is left to the deployment. This is a development baseline, not deployment approval.
+
+The POS side of this contract, its allow-listed fields and its tests are documented in [`docs/integration/CATALOG_INTEGRATION_SLICE.md`](docs/integration/CATALOG_INTEGRATION_SLICE.md). This does not make the storefront production-ready, and customers still cannot place real orders.
+
+---
+
 ## Architecture
 
 MerchantOS Storefront is designed to use a shared retail backend rather than creating independent authoritative product, inventory and order databases.
