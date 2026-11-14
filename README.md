@@ -238,7 +238,3 @@ MerchantOS is intended to demonstrate more than three independent user interface
 The long-term engineering objective is a connected retail workflow where a purchase initiated through the Storefront is processed by the shared backend, reflected in inventory, and visible to cashiers and store managers through their respective applications.
 
 **One retail ecosystem. Three frontend architectures. Shared business operations.**
-
----
-
-_MerchantOS Storefront is an independent software engineering portfolio project, currently under active development._
