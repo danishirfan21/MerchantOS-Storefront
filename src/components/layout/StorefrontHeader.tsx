@@ -1,8 +1,9 @@
-import { Heart, ShoppingBag, Truck, User } from "lucide-react";
+import { Truck, User } from "lucide-react";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
 import { Logo } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { NavLink } from "@/components/layout/NavLink";
+import { HeaderCartLink, HeaderWishlistLink } from "@/components/shopping/HeaderShoppingLinks";
 import { Container } from "@/components/ui/Container";
 import { IconButton } from "@/components/ui/IconButton";
 import { categoryNav, PENDING_HINT } from "@/lib/navigation";
@@ -12,7 +13,7 @@ import { categoryNav, PENDING_HINT } from "@/lib/navigation";
  *  - < md: logo + search / cart / menu buttons (disclosure panel in MobileNav)
  *  - md:   logo + search + actions, category row below
  *  - lg:   adds the utility bar above and widens the search with a button
- * Wishlist, cart and account have no pages yet, so they render disabled.
+ * Wishlist and cart are links with live counts (small client components); account has no page yet.
  */
 export function StorefrontHeader() {
   return (
@@ -33,12 +34,8 @@ export function StorefrontHeader() {
         <HeaderSearch withButton className="hidden min-w-0 flex-1 md:block lg:max-w-2xl" />
 
         <div className="ms-auto flex items-center sm:gap-1 md:ms-0">
-          <IconButton label="Wishlist" disabled title={PENDING_HINT} className="max-md:hidden">
-            <Heart size={22} strokeWidth={2} />
-          </IconButton>
-          <IconButton label="Cart" disabled title={PENDING_HINT} className="order-2">
-            <ShoppingBag size={22} strokeWidth={2} />
-          </IconButton>
+          <HeaderWishlistLink className="max-md:hidden" />
+          <HeaderCartLink className="order-2" />
           <IconButton label="Account" disabled title={PENDING_HINT} variant="brand" className="rounded-full max-md:hidden">
             <User size={20} strokeWidth={2} />
           </IconButton>

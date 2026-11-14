@@ -11,6 +11,8 @@ type ProductCardProps = {
   product: Product;
   /** Action area (add to cart, wishlist...) supplied by the page that owns that state. */
   actions?: ReactNode;
+  /** Control pinned to the image corner (wishlist heart). */
+  mediaAction?: ReactNode;
   /** Detail-page link. Defaults to the product's own page. */
   href?: string;
   className?: string;
@@ -34,7 +36,7 @@ function StockLine({ product }: { product: Product }) {
  * Presentational product card. Without an authorized image it shows a neutral
  * placeholder; it never loads remote Stitch images.
  */
-export function ProductCard({ product, actions, href = productPath(product), className }: ProductCardProps) {
+export function ProductCard({ product, actions, mediaAction, href = productPath(product), className }: ProductCardProps) {
   const titleId = `product-${product.id}-title`;
 
   return (
@@ -57,6 +59,7 @@ export function ProductCard({ product, actions, href = productPath(product), cla
             {product.badge}
           </Badge>
         ) : null}
+        {mediaAction ? <div className="absolute end-2 top-2 z-10">{mediaAction}</div> : null}
       </div>
 
       <div className="flex flex-1 flex-col gap-1.5 p-3 sm:gap-2 sm:p-4">

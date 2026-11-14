@@ -1,3 +1,4 @@
+import { Announcer } from "@/components/shopping/Announcer";
 import { StorefrontFooter } from "@/components/layout/StorefrontFooter";
 import { StorefrontHeader } from "@/components/layout/StorefrontHeader";
 
@@ -11,6 +12,7 @@ export default function ShopLayout({ children }: LayoutProps<"/">) {
       >
         Skip to content
       </a>
+      <Announcer />
       <StorefrontHeader />
       <main id="main" className="flex-1">
         {children}

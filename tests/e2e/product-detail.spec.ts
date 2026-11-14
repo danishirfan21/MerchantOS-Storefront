@@ -21,7 +21,7 @@ test.describe("Product Detail", () => {
   test("homepage featured products link to their detail pages", async ({ page }) => {
     await page.goto("/");
     const first = catalogProducts[0];
-    await page.getByRole("link", { name: first.name }).first().click();
+    await page.getByRole("link", { name: first.name, exact: true }).first().click();
     await expect(page).toHaveURL(new RegExp(`/products/${productSlug(first)}$`));
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(first.name);
   });

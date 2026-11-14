@@ -93,15 +93,14 @@ describe("ProductVariantSelector", () => {
 });
 
 describe("ProductPurchasePanel", () => {
-  it("offers variants and a bounded quantity, with the purchase action unavailable", async () => {
+  it("offers variants and a bounded quantity, and an enabled add-to-cart action", async () => {
     render(<ProductPurchasePanel product={product("p3")} />); // low stock, 4 left, no variants
     expect(screen.queryByRole("radiogroup")).not.toBeInTheDocument();
     expect(screen.queryByRole("group", { name: /finish|colour/i })).not.toBeInTheDocument();
     const plus = screen.getByRole("button", { name: "Increase quantity" });
     for (let i = 0; i < 10; i += 1) if (!(plus as HTMLButtonElement).disabled) await userEvent.click(plus);
     expect(screen.getByLabelText("Selected quantity")).toHaveTextContent("4");
-    expect(screen.getByRole("button", { name: "Add to cart" })).toBeDisabled();
-    expect(screen.getByText(/cart is not available yet/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Add to cart" })).toBeEnabled();
   });
 
   it("shows variant selectors only for products that define them", () => {

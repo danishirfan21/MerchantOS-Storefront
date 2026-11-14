@@ -48,7 +48,7 @@ The application uses reusable React components, semantic design tokens and respo
 
 ## Current Implementation
 
-The application foundation, responsive Homepage, Product Catalog and Product Detail pages are implemented, with an automated test suite.
+The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart and Wishlist are implemented, with an automated test suite.
 
 ### Implemented
 
@@ -71,11 +71,12 @@ The application foundation, responsive Homepage, Product Catalog and Product Det
   - One reusable page that serves all 25 catalogue products, prerendered at build time
   - Gallery with selectable thumbnails, price with compare-at discount, availability, variants, quantity selector, overview, specifications, delivery note and related products
   - Product cards on the Homepage and Catalog link to it, and "Back to catalog" restores the filters the shopper came from
+- **Shopping Cart** at `/cart` and **Wishlist** at `/wishlist`, with header counts, working add-to-cart controls and browser persistence (see Shopping Cart and Wishlist below)
 - Responsive design tokens and typography
 
 The Homepage and Catalog have been browser-checked at desktop, tablet and mobile sizes, down to 320px. TypeScript, ESLint and the production build pass.
 
-Product imagery currently uses temporary placeholders (see Known limitations). Cart actions and backend integrations are not implemented, and their controls are shown as disabled.
+Product imagery currently uses temporary placeholders (see Known limitations). Checkout, accounts and backend integrations are not implemented; the checkout button is shown disabled.
 
 ---
 
@@ -104,10 +105,10 @@ The Storefront is being developed around nine core customer-facing pages:
 1. **Homepage:** Flagship products, departments and promotions. _Implemented._
 2. **Product Catalog:** Product search, filtering and sorting. _Implemented._
 3. **Product Detail:** Image galleries, specifications and variants. _Implemented._
-4. **Shopping Cart:** Product selection, quantities and totals.
+4. **Shopping Cart:** Product selection, quantities and totals. _Implemented._
 5. **Checkout:** Customer details, delivery information and simulated payment.
 6. **Order Confirmation:** Purchase summary and confirmation.
-7. **Wishlist:** Saved products and shopping actions.
+7. **Wishlist:** Saved products and shopping actions. _Implemented._
 8. **My Orders:** Customer purchase history.
 9. **Order Details & Tracking:** Order information and fulfillment status.
 
@@ -136,9 +137,34 @@ All catalogue data is fictional sample data, not live inventory.
 ### Known limitations
 
 - Product imagery is placeholder only. No authorized photography exists yet, so each gallery shows four clearly labelled placeholder slots rather than reusing one picture as different angles.
-- Add to cart is shown but disabled until the cart is built. Wishlist, checkout, authentication and any backend integration are deferred.
+- Checkout, authentication and any backend integration are deferred.
 - Reviews, warranty or certification claims, bundles and delivery promises from the design references are intentionally not reproduced, because there is no data behind them.
 - Below roughly 313px of available width the header would overflow. This only matters at 320px on browsers with a permanent scrollbar.
+
+---
+
+## Shopping Cart and Wishlist
+
+**Routes:** `/cart` and `/wishlist`. Add to cart works on Product Detail (selected variants and quantity), on Homepage, Catalog and related-product cards, and from the Wishlist. Cards for products with variants link to the detail page ("Choose options") instead of guessing a configuration.
+
+### Local demo state
+Cart and wishlist live in the browser's `localStorage` (`merchantos.storefront.cart.v1`, `merchantos.storefront.wishlist.v1`). This is demo state, not an account, an order or authoritative inventory; it is per browser and per device.
+
+- A cart line stores only `productId`, the selected variant option ids and `quantity`. Name, price, compare-at price and availability are always derived from the catalogue, so prices are never persisted.
+- A line is identified by product id plus variant selection (independent of key order). Adding the same configuration merges and raises the quantity up to the limit; a different variant is a separate line.
+- The wishlist is a list of product ids without duplicates, independent of the cart. Adding a wishlist item to the cart (default variants, quantity 1) does not remove it from the wishlist, and out-of-stock products are never added.
+- Stored data is validated on load: unknown or out-of-stock products are dropped, variants are repaired against the catalogue, quantities are clamped and duplicate configurations merged. Corrupt or unavailable storage degrades to an in-memory session.
+- The store is read with `useSyncExternalStore`: the server and first client render are empty, then stored state appears, so there is no hydration mismatch and the initial empty state never overwrites stored data. Other tabs are followed through the `storage` event.
+- The logic is in pure functions (`src/lib/shopping.ts`); the browser store is `src/lib/shopping-store.ts`.
+
+### Quantity and availability rules
+Quantity is at least 1 and at most the known fixture `stockCount` for low-stock products, otherwise 10 per order line. Out-of-stock products cannot be added. Limits are enforced on repeated additions, and a refused addition is reported as a message rather than a success.
+
+### Totals
+Amounts are computed in integer halalas. The summary shows item count, subtotal in SAR, savings measured only against explicit compare-at prices (already included in the subtotal) and an **estimated total**, which equals the subtotal. Shipping, tax and discount codes are not modelled and the summary says so. These figures come from fictional fixtures, are not a final payable amount, and do not reflect live inventory or any real order.
+
+### Functional and deferred
+Functional: add, merge, change quantity, remove, wishlist save and remove, move to cart, header counts, persistence, empty states. Deferred: checkout, payments, accounts, promotion codes, shipping and tax, order history, live stock, and anything server-side.
 
 ---
 
@@ -202,7 +228,7 @@ Standalone TypeScript checking requires generated Next.js route types.
 
 - `npm run typecheck` generates route types and runs the TypeScript check.
 - Browser tests run against a production build: run `npm run build` first. Install the browser once with `npx playwright install chromium`.
-- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, and the Homepage to Catalog to Product Detail journey, including the 404 for unknown products.
+- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, cart and wishlist logic (merging, limits, totals, validation of stored data), the cart and wishlist components, and browser journeys from Homepage to Catalog to Product Detail to Cart and Wishlist, including reload persistence, corrupt storage, cross-tab sync and the 404 for unknown products.
 - A GitHub Actions workflow (`.github/workflows/quality.yml`) runs type generation, TypeScript, ESLint, the unit tests, the build and the browser tests on pull requests and pushes to `main`.
 
 ---

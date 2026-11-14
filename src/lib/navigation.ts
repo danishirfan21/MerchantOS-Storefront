@@ -26,6 +26,7 @@ export const footerGroups: Array<{ title: string; items: NavItem[] }> = [
       { label: "Smartphones", href: "/products?category=smartphones" },
       { label: "Computing", href: "/products?category=laptops" },
       { label: "Audio", href: "/products?category=audio" },
+      { label: "Cart", href: "/cart" },
     ],
   },
   {
@@ -34,7 +35,7 @@ export const footerGroups: Array<{ title: string; items: NavItem[] }> = [
   },
   {
     title: "Account",
-    items: [{ label: "My orders" }, { label: "Wishlist" }, { label: "Sign in" }],
+    items: [{ label: "My orders" }, { label: "Wishlist", href: "/wishlist" }, { label: "Sign in" }],
   },
 ];
 

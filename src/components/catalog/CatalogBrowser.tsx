@@ -8,7 +8,6 @@ import { EmptyResults } from "@/components/catalog/EmptyResults";
 import { FilterDrawer } from "@/components/catalog/FilterDrawer";
 import { FiltersPanel } from "@/components/catalog/FiltersPanel";
 import { SortSelect } from "@/components/catalog/SortSelect";
-import { AddToCartPlaceholder } from "@/components/products/AddToCartPlaceholder";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container";
@@ -133,7 +132,6 @@ export function CatalogBrowser() {
                 products={results}
                 columnsClassName="grid-cols-2 xl:grid-cols-3"
                 hrefFor={(product) => productPath(product, toSearchString(filters, sort))}
-                renderActions={(product) => <AddToCartPlaceholder product={product} />}
               />
             ) : (
               <EmptyResults query={filters.q} onClear={clearAll} />

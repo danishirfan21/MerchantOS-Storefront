@@ -25,7 +25,7 @@ test.describe("Homepage to Catalog to Product Detail", () => {
     await expect(count).toHaveText(`1 of ${catalogProducts.length} products`);
 
     // 4. Open the product
-    await page.getByRole("link", { name: headphones.name }).click();
+    await page.getByRole("link", { name: headphones.name, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`/products/${productSlug(headphones)}`));
 
     // 5. Title and price match the source record
@@ -54,8 +54,8 @@ test.describe("Homepage to Catalog to Product Detail", () => {
     await page.getByRole("button", { name: "Decrease quantity" }).click();
     await expect(quantity).toHaveText("2");
 
-    // Purchase action is honestly unavailable
-    await expect(page.getByRole("button", { name: "Add to cart" })).toBeDisabled();
+    // Purchase action is available (the cart itself is covered by shopping.spec.ts)
+    await expect(page.getByRole("button", { name: "Add to cart" })).toBeEnabled();
 
     // 9. Back to the catalog keeps the search
     await page.getByRole("link", { name: "Back to catalog" }).click();
@@ -69,7 +69,7 @@ test.describe("Homepage to Catalog to Product Detail", () => {
     await page.getByRole("checkbox", { name: /Nova/ }).check();
     await expect(page).toHaveURL(/category=smartphones/);
     await expect(page).toHaveURL(/brand=Nova/);
-    await page.getByRole("link", { name: "Flagship smartphone 256GB" }).click();
+    await page.getByRole("link", { name: "Flagship smartphone 256GB", exact: true }).click();
     await page.getByRole("link", { name: "Back to catalog" }).click();
     await expect(page).toHaveURL(/category=smartphones/);
     await expect(page).toHaveURL(/brand=Nova/);

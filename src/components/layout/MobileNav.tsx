@@ -1,15 +1,17 @@
 "use client";
 
-import { Heart, Menu, Search, User, X } from "lucide-react";
+import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
 import { NavLink } from "@/components/layout/NavLink";
+import { CountPill } from "@/components/shopping/HeaderShoppingLinks";
 import { Badge } from "@/components/ui/Badge";
 import { IconButton } from "@/components/ui/IconButton";
 import { categoryNav, type NavItem } from "@/lib/navigation";
 
-const accountItems: Array<NavItem & { icon: typeof Heart }> = [
-  { label: "Wishlist", icon: Heart },
+const accountItems: Array<NavItem & { icon: typeof Heart; count?: "cart" | "wishlist" }> = [
+  { label: "Cart", href: "/cart", icon: ShoppingBag, count: "cart" },
+  { label: "Wishlist", href: "/wishlist", icon: Heart, count: "wishlist" },
   { label: "Account", icon: User },
 ];
 
@@ -81,7 +83,7 @@ export function MobileNav() {
         </nav>
         <nav aria-label="Account" className="mt-4 border-t border-line/30 pt-4">
           <ul className="flex flex-col">
-            {accountItems.map(({ icon: Icon, ...item }) => (
+            {accountItems.map(({ icon: Icon, count, ...item }) => (
               <li key={item.label}>
                 <NavLink
                   item={item}
@@ -89,6 +91,7 @@ export function MobileNav() {
                 >
                   <Icon size={20} strokeWidth={2} aria-hidden="true" />
                   {item.label}
+                  {count ? <CountPill kind={count} /> : null}
                 </NavLink>
               </li>
             ))}
