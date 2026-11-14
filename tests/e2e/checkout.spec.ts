@@ -59,6 +59,7 @@ test.describe("checkout journey", () => {
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "All products" }).click();
+    await expect(page).toHaveURL(/\/products$/); // let the navigation finish before clicking a card
     await page.getByRole("link", { name: headphones, exact: true }).click();
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(headphones);
 
