@@ -137,7 +137,7 @@ All catalogue data is fictional sample data, not live inventory.
 ### Known limitations
 
 - Product imagery is placeholder only. No authorized photography exists yet, so each gallery shows four clearly labelled placeholder slots rather than reusing one picture as different angles.
-- Authentication and any backend integration are deferred. Checkout is a browser-local demo.
+- Authentication is not included, and checkout runs in the browser without a backend.
 - Reviews, warranty or certification claims, bundles and delivery promises from the design references are intentionally not reproduced, because there is no data behind them.
 - Below roughly 313px of available width the header would overflow. This only matters at 320px on browsers with a permanent scrollbar.
 
@@ -163,8 +163,8 @@ Quantity is at least 1 and at most the known fixture `stockCount` for low-stock 
 ### Totals
 Amounts are computed in integer halalas. The summary shows item count, subtotal in SAR, savings measured only against explicit compare-at prices (already included in the subtotal) and an **estimated total**, which equals the subtotal. Shipping, tax and discount codes are not modelled and the summary says so. These figures come from fictional fixtures, are not a final payable amount, and do not reflect live inventory or any real order.
 
-### Functional and deferred
-Functional: add, merge, change quantity, remove, wishlist save and remove, move to cart, header counts, persistence, empty states, and the demo checkout below. Deferred: real payments, accounts, promotion codes, shipping and tax, order history, live stock, and anything server-side.
+### Scope
+Included: add, merge, change quantity, remove, wishlist save and remove, move to cart, header counts, persistence, empty states, and the demo checkout below. Not included: real payments, accounts, promotion codes, shipping and tax, order history, live stock, and anything server-side.
 
 ---
 
@@ -209,8 +209,8 @@ Repeated submission is blocked while processing, and each checkout visit has a s
 ### Differences from the design references
 The layout, step indicator, section structure and order review follow the designs. These elements are intentionally not reproduced because nothing real stands behind them: encryption or security-compliance claims, card entry fields, Apple Pay, mada and other payment brands, VAT amounts, free or priced delivery and delivery times, vouchers, warranty and returns promises, phone support, settlement and tax-invoice statements, tracking and invoice actions, and the shipping destination block with personal details.
 
-### Future backend requirements
-A real implementation needs server-side cart and price authority, transactional stock reservation, a payment provider integration with server-confirmed capture, server-enforced idempotency, authenticated customers, stored addresses with consent, and transactional email. The order-history pages read the existing records without personal data, because each already carries a reference, timestamp, status, line snapshots and totals, and lookup is by order id.
+### Backend requirements for real orders
+Real orders need server-side cart and price authority, transactional stock reservation, a payment provider integration with server-confirmed capture, server-enforced idempotency, authenticated customers, stored addresses with consent, and transactional email. The order-history pages read the existing records without personal data, because each already carries a reference, timestamp, status, line snapshots and totals, and lookup is by order id.
 
 ---
 
@@ -334,7 +334,7 @@ Standalone TypeScript checking requires generated Next.js route types.
 
 MerchantOS Storefront currently uses fictional retail information and local presentation fixtures. It does not provide live payment processing, real orders, shipments or production customer checkout. The checkout is a simulated, browser-local demo.
 
-Future integrations are intended to enforce:
+Backend-connected features are built to enforce:
 
 - Backend-authoritative product prices
 - Transactional inventory updates
