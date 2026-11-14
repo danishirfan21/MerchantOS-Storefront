@@ -20,6 +20,7 @@ import {
   sanitizeWishlist,
   serializeCart,
   serializeWishlist,
+  subtractLines,
   toggleWishlist,
   updateQuantity,
   WISHLIST_STORAGE_KEY,
@@ -51,11 +52,13 @@ function readJson(key: string): unknown {
   }
 }
 
-function write(key: string, value: string) {
+function write(key: string, value: string): boolean {
   try {
     window.localStorage.setItem(key, value);
+    return true;
   } catch {
     // Storage is full, blocked or unavailable: keep the in-memory state for this session.
+    return false;
   }
 }
 
@@ -142,6 +145,27 @@ export function saveToWishlist(productId: string) {
 
 export function removeFromWishlistItem(productId: string) {
   commitWishlist(removeFromWishlist(getSnapshot().wishlist, productId));
+}
+
+/** Re-reads the stored cart (for example after another tab changed it) and returns it. */
+export function reloadShoppingState(): ShoppingSnapshot {
+  snapshot = load();
+  emit();
+  return snapshot;
+}
+
+/**
+ * Removes the purchased quantities from the freshly loaded cart. Only the submitted lines
+ * and quantities are removed, so items added elsewhere meanwhile stay. The wishlist is
+ * untouched. Returns whether the change reached storage.
+ */
+export function removePurchasedLines(purchased: CartLine[]): boolean {
+  const current = load().cart;
+  const next = subtractLines(current, purchased);
+  snapshot = { ...getSnapshot(), ready: true, cart: next };
+  const persisted = write(CART_STORAGE_KEY, serializeCart(next));
+  emit();
+  return persisted;
 }
 
 /** Test helper: forget the in-memory snapshot so the next read reloads from storage. */

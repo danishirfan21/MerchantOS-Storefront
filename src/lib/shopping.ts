@@ -128,6 +128,22 @@ export function removeLine(lines: CartLine[], key: string): CartLine[] {
   return lines.filter((line) => lineKey(line.productId, line.variants) !== key);
 }
 
+/** Removes the given quantities from the cart; lines that reach zero are dropped. */
+export function subtractLines(lines: CartLine[], purchased: CartLine[]): CartLine[] {
+  const remaining = new Map<string, number>();
+  for (const line of purchased) {
+    const key = lineKey(line.productId, line.variants);
+    remaining.set(key, (remaining.get(key) ?? 0) + line.quantity);
+  }
+  return lines.flatMap((line) => {
+    const key = lineKey(line.productId, line.variants);
+    const take = Math.min(line.quantity, remaining.get(key) ?? 0);
+    remaining.set(key, (remaining.get(key) ?? 0) - take);
+    const left = line.quantity - take;
+    return left > 0 ? [{ ...line, quantity: left }] : [];
+  });
+}
+
 export type ResolvedLine = {
   key: string;
   line: CartLine;

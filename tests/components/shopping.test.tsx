@@ -121,7 +121,7 @@ describe("CartView", () => {
     expect(screen.getByTestId("summary-savings")).toHaveTextContent("600");
     expect(screen.getByTestId("summary-total")).toHaveTextContent("18,897");
     expect(screen.getByText(/not a final payable amount/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Proceed to checkout" })).toBeDisabled();
+    expect(screen.getByRole("link", { name: "Proceed to checkout" })).toHaveAttribute("href", "/checkout");
   });
 
   it("updates quantity within limits, then removes the last line to reach the empty state", async () => {

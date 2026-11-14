@@ -48,7 +48,7 @@ The application uses reusable React components, semantic design tokens and respo
 
 ## Current Implementation
 
-The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart and Wishlist are implemented, with an automated test suite.
+The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart, Wishlist, demo Checkout and Order Confirmation are implemented, with an automated test suite.
 
 ### Implemented
 
@@ -76,7 +76,7 @@ The application foundation, responsive Homepage, Product Catalog, Product Detail
 
 The Homepage and Catalog have been browser-checked at desktop, tablet and mobile sizes, down to 320px. TypeScript, ESLint and the production build pass.
 
-Product imagery currently uses temporary placeholders (see Known limitations). Checkout, accounts and backend integrations are not implemented; the checkout button is shown disabled.
+Product imagery currently uses temporary placeholders (see Known limitations). Accounts and backend integrations are not implemented, and checkout is a browser-local demo with no real payment.
 
 ---
 
@@ -106,8 +106,8 @@ The Storefront is being developed around nine core customer-facing pages:
 2. **Product Catalog:** Product search, filtering and sorting. _Implemented._
 3. **Product Detail:** Image galleries, specifications and variants. _Implemented._
 4. **Shopping Cart:** Product selection, quantities and totals. _Implemented._
-5. **Checkout:** Customer details, delivery information and simulated payment.
-6. **Order Confirmation:** Purchase summary and confirmation.
+5. **Checkout:** Customer details, delivery information and simulated payment. _Implemented (demo)._
+6. **Order Confirmation:** Purchase summary and confirmation. _Implemented (demo)._
 7. **Wishlist:** Saved products and shopping actions. _Implemented._
 8. **My Orders:** Customer purchase history.
 9. **Order Details & Tracking:** Order information and fulfillment status.
@@ -137,7 +137,7 @@ All catalogue data is fictional sample data, not live inventory.
 ### Known limitations
 
 - Product imagery is placeholder only. No authorized photography exists yet, so each gallery shows four clearly labelled placeholder slots rather than reusing one picture as different angles.
-- Checkout, authentication and any backend integration are deferred.
+- Authentication and any backend integration are deferred. Checkout is a browser-local demo.
 - Reviews, warranty or certification claims, bundles and delivery promises from the design references are intentionally not reproduced, because there is no data behind them.
 - Below roughly 313px of available width the header would overflow. This only matters at 320px on browsers with a permanent scrollbar.
 
@@ -164,7 +164,53 @@ Quantity is at least 1 and at most the known fixture `stockCount` for low-stock 
 Amounts are computed in integer halalas. The summary shows item count, subtotal in SAR, savings measured only against explicit compare-at prices (already included in the subtotal) and an **estimated total**, which equals the subtotal. Shipping, tax and discount codes are not modelled and the summary says so. These figures come from fictional fixtures, are not a final payable amount, and do not reflect live inventory or any real order.
 
 ### Functional and deferred
-Functional: add, merge, change quantity, remove, wishlist save and remove, move to cart, header counts, persistence, empty states. Deferred: checkout, payments, accounts, promotion codes, shipping and tax, order history, live stock, and anything server-side.
+Functional: add, merge, change quantity, remove, wishlist save and remove, move to cart, header counts, persistence, empty states, and the demo checkout below. Deferred: real payments, accounts, promotion codes, shipping and tax, order history, live stock, and anything server-side.
+
+---
+
+## Checkout and Order Confirmation
+
+**Routes:** `/checkout` and `/order-confirmation/[id]`. Both use a focused route-group layout (`src/app/(checkout)`) with the simplified `CheckoutHeader` instead of the full storefront header and footer. The cart's "Proceed to checkout" link is enabled whenever the cart has items; an empty cart shows an empty state with a way back.
+
+**This is a demo.** No payment is taken, no order is placed with anyone, nothing is shipped or reserved, and no email is sent. The pages say so, and the confirmation uses wording such as "Demo order created".
+
+### Flow
+Review the cart, enter contact and delivery details, choose a demo delivery method and a simulated payment option, review the estimated summary, and place the demo order. The confirmation page shows the stored order and survives a reload.
+
+### Form and validation
+Validation is client-side and pure (`src/lib/checkout.ts`): required fields, email format, Saudi mobile format (`05XXXXXXXX`, `5XXXXXXXX` or `+9665XXXXXXXX`), 5-digit postal code, length limits and valid delivery, payment, country and city selections. Errors are tied to fields with `aria-invalid` and `aria-describedby`, an alert summarises the count, and focus moves to the first invalid field. Fields carry autocomplete attributes and the delivery and payment choices are native radio groups.
+
+### Demo payment
+Options are "Demo cash on delivery" and "Simulated card payment". There are no card number, expiry, security code or bank fields, and no payment provider. Nothing is described as authorised, captured or settled.
+
+### Order summary
+The review reuses the cart maths in integer halalas: item count, subtotal, savings measured only against explicit compare-at prices, and an estimated total equal to the subtotal. Shipping and tax are not modelled and the page says the figure is not a final payable amount.
+
+### Demo order record
+`src/lib/demo-orders.ts` (pure) and `src/lib/demo-order-store.ts` (browser store) are isolated from the components so they can later be replaced by a backend API. A record is a snapshot taken at submission, so later cart edits do not change it:
+
+```
+schemaVersion, id (DEMO-XXXXXXXX), submissionId, createdAt, status ("demo-created"),
+paymentMethod {id, label}, deliveryMethod {id, label},
+lines [{ productId, name, variants, variantLabels, quantity, unitHalalas, lineTotalHalalas }],
+itemCount, subtotalHalalas, savingsHalalas, estimatedTotalHalalas
+```
+
+Stored data is validated on read: wrong schema versions, malformed records and records whose totals do not add up are rejected rather than repaired, labels come from the app rather than from storage, and the store is capped by count and size. Orders live in `localStorage` (`merchantos.storefront.demo-orders.v1`) in this browser only. They are not shared between browsers or devices and disappear if site data is cleared.
+
+### Privacy
+Name, email, phone, street address, recipient and any payment data are held in component state while the form is open and are never stored, put in a URL, logged or written into the order record. Neither `localStorage` nor `sessionStorage` receives them. The confirmation shows only the non-sensitive delivery and payment option labels. Do not enter real personal details.
+
+### Submission and cart clearing
+Before creating anything the cart is reloaded from storage and revalidated (products exist, are in stock, variants are valid, quantities are within limits, totals are recalculated from the catalogue) and compared with what the shopper was shown. If it changed or cannot be ordered, submission is blocked with an explanation and a link back to the cart. The order is saved and read back first; only then are the purchased quantities removed from the cart. Items added in another tab meanwhile stay, and the wishlist is untouched. If the order cannot be saved (storage blocked or full), nothing is created, the cart is unchanged and a recoverable error is shown.
+
+Repeated submission is blocked while processing, and each checkout visit has a submission id so a repeated submit returns the order already created instead of a second one. Refreshing or revisiting the confirmation only reads the stored record. This protection is client-side only: it cannot stop a deliberate second checkout in another tab or browser, and a real backend must enforce its own idempotency keys.
+
+### Differences from the design references
+The layout, step indicator, section structure and order review follow the designs. These elements are intentionally not reproduced because nothing real stands behind them: encryption or security-compliance claims, card entry fields, Apple Pay, mada and other payment brands, VAT amounts, free or priced delivery and delivery times, vouchers, warranty and returns promises, phone support, settlement and tax-invoice statements, tracking and invoice actions, and the shipping destination block with personal details.
+
+### Future backend requirements
+A real implementation needs server-side cart and price authority, transactional stock reservation, a payment provider integration with server-confirmed capture, server-enforced idempotency, authenticated customers, stored addresses with consent, and transactional email. A later order-history feature can read the existing records without personal data, because each already carries a reference, timestamp, status, line snapshots and totals, and lookup is by order id.
 
 ---
 
@@ -228,14 +274,14 @@ Standalone TypeScript checking requires generated Next.js route types.
 
 - `npm run typecheck` generates route types and runs the TypeScript check.
 - Browser tests run against a production build: run `npm run build` first. Install the browser once with `npx playwright install chromium`.
-- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, cart and wishlist logic (merging, limits, totals, validation of stored data), the cart and wishlist components, and browser journeys from Homepage to Catalog to Product Detail to Cart and Wishlist, including reload persistence, corrupt storage, cross-tab sync and the 404 for unknown products.
+- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, cart and wishlist logic (merging, limits, totals, validation of stored data), the cart and wishlist components, checkout validation, demo-order snapshots, storage corruption and unavailability, idempotent submission, the checkout and confirmation components, and browser journeys from Homepage to Catalog to Product Detail to Cart and Wishlist, including reload persistence, corrupt storage, cross-tab sync and the 404 for unknown products.
 - A GitHub Actions workflow (`.github/workflows/quality.yml`) runs type generation, TypeScript, ESLint, the unit tests, the build and the browser tests on pull requests and pushes to `main`.
 
 ---
 
 ## Security and Demo Scope
 
-MerchantOS Storefront currently uses fictional retail information and local presentation fixtures. It does not provide live payment processing or production customer checkout.
+MerchantOS Storefront currently uses fictional retail information and local presentation fixtures. It does not provide live payment processing, real orders, shipments or production customer checkout. The checkout is a simulated, browser-local demo.
 
 Future integrations are intended to enforce:
 
@@ -243,7 +289,7 @@ Future integrations are intended to enforce:
 - Transactional inventory updates
 - Customer-specific access controls
 - Secure session management
-- Checkout idempotency
+- Server-enforced checkout idempotency
 - Appropriate audit and error handling
 
 The project is intended for development, testing and portfolio demonstrations, not unrestricted public production use.

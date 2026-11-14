@@ -46,7 +46,7 @@ test.describe("cart and wishlist journey", () => {
     await expect(page.getByTestId("summary-subtotal")).toContainText("2,298");
     await expect(page.getByTestId("summary-savings")).toContainText("500");
     await expect(page.getByTestId("summary-total")).toContainText("2,298");
-    await expect(page.getByRole("button", { name: "Proceed to checkout" })).toBeDisabled();
+    await expect(page.getByRole("link", { name: "Proceed to checkout" })).toHaveAttribute("href", "/checkout");
 
     // 10. Modify
     await page.getByRole("button", { name: `Increase quantity for ${headphones}` }).click();

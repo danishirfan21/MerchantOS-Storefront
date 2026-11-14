@@ -8,7 +8,7 @@ import { ProductAvailability } from "@/components/product-detail/ProductAvailabi
 import { ProductThumb } from "@/components/products/ProductThumb";
 import { useShopping } from "@/components/shopping/useShopping";
 import { Badge } from "@/components/ui/Badge";
-import { Button, ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { IconButton } from "@/components/ui/IconButton";
 import { announce } from "@/lib/announcer";
 import { formatAmount } from "@/lib/format";
@@ -143,11 +143,18 @@ function OrderSummary({ resolved }: { resolved: ResolvedLine[] }) {
         checkout.
       </p>
 
-      <Button fullWidth size="lg" disabled className="mt-5" aria-describedby="checkout-note">
+      <ButtonLink
+        href="/checkout"
+        fullWidth
+        size="lg"
+        className="mt-5"
+        aria-describedby="checkout-note"
+        trailingIcon={<ArrowRight size={18} aria-hidden="true" />}
+      >
         Proceed to checkout
-      </Button>
+      </ButtonLink>
       <p id="checkout-note" className="mt-2 text-center text-label-md font-normal text-ink-slate">
-        Checkout is not available yet.
+        Demo checkout: no payment is taken and no order is shipped.
       </p>
       <ButtonLink href="/products" variant="ghost" fullWidth className="mt-3">
         Continue shopping
