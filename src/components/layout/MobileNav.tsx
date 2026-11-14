@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Heart, Menu, PackageSearch, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
 import { NavLink } from "@/components/layout/NavLink";
@@ -12,7 +12,7 @@ import { categoryNav, type NavItem } from "@/lib/navigation";
 const accountItems: Array<NavItem & { icon: typeof Heart; count?: "cart" | "wishlist" }> = [
   { label: "Cart", href: "/cart", icon: ShoppingBag, count: "cart" },
   { label: "Wishlist", href: "/wishlist", icon: Heart, count: "wishlist" },
-  { label: "Account", icon: User },
+  { label: "My orders", href: "/account/orders", icon: PackageSearch },
 ];
 
 /**

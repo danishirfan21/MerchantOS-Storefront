@@ -1,80 +1,20 @@
 "use client";
 
-import { Check, PackageSearch, TriangleAlert } from "lucide-react";
+import { Check } from "lucide-react";
 import { useSyncExternalStore } from "react";
-import { Money } from "@/components/checkout/CheckoutSummary";
-import { ProductThumb } from "@/components/products/ProductThumb";
-import { Badge } from "@/components/ui/Badge";
+import {
+  formatOrderDate,
+  MissingOrder,
+  OrderItemList,
+  OrderMoneySummary,
+  OrderStatusBadge,
+  orderCard as card,
+} from "@/components/orders/OrderParts";
 import { ButtonLink } from "@/components/ui/Button";
 import { isOrderId, type DemoOrder } from "@/lib/demo-orders";
 import { getServerSnapshot, getSnapshot, subscribe } from "@/lib/demo-order-store";
-import { getProductById } from "@/lib/products";
-
-const card = "rounded-2xl bg-card p-5 shadow-card sm:p-6";
-
-function formatCreatedAt(iso: string): string {
-  return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso));
-}
-
-function MissingOrder({ unavailable }: { unavailable: boolean }) {
-  const Icon = unavailable ? TriangleAlert : PackageSearch;
-  return (
-    <div className="mx-auto flex max-w-xl flex-col items-center rounded-2xl bg-card px-6 py-14 text-center shadow-card">
-      <span className="flex size-16 items-center justify-center rounded-full bg-surface-2 text-ink-slate">
-        <Icon size={30} strokeWidth={1.75} aria-hidden="true" />
-      </span>
-      <h1 className="mt-5 font-heading text-headline-lg text-ink">
-        {unavailable ? "Demo orders can't be read" : "Demo order not found"}
-      </h1>
-      <p className="mt-2 text-body-md text-ink-slate">
-        {unavailable
-          ? "This browser is blocking storage, so saved demo orders can't be shown."
-          : "We couldn't find a demo order with this reference in this browser. Demo orders are stored in the browser that created them only, and are lost if site data is cleared."}
-      </p>
-      <div className="mt-6 flex flex-wrap justify-center gap-3">
-        <ButtonLink href="/products" size="lg">
-          Continue shopping
-        </ButtonLink>
-        <ButtonLink href="/cart" variant="outline" size="lg">
-          View cart
-        </ButtonLink>
-      </div>
-    </div>
-  );
-}
-
-function OrderLines({ order }: { order: DemoOrder }) {
-  return (
-    <ul className="mt-4 divide-y divide-line/30 border-t border-line/30">
-      {order.lines.map((line) => {
-        const product = getProductById(line.productId);
-        return (
-          <li key={`${line.productId}|${JSON.stringify(line.variants)}`} className="flex gap-4 py-4">
-            <span className="size-16 shrink-0 overflow-hidden rounded-lg bg-surface-1 sm:size-20">
-              {product ? <ProductThumb product={{ ...product, name: line.name }} /> : null}
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="text-body-md font-semibold text-ink">{line.name}</p>
-              {line.variantLabels.length > 0 ? (
-                <p className="text-label-md font-normal text-ink-slate">{line.variantLabels.join(" · ")}</p>
-              ) : null}
-              <p className="text-label-md font-normal text-ink-slate">
-                Qty {line.quantity} × <Money halalas={line.unitHalalas} />
-              </p>
-            </div>
-            <p className="shrink-0 font-heading text-body-md font-semibold text-ink tabular-nums">
-              <span className="sr-only">Line total </span>
-              <Money halalas={line.lineTotalHalalas} />
-            </p>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
 
 function ConfirmedOrder({ order }: { order: DemoOrder }) {
-  const row = "flex items-baseline justify-between gap-4 text-body-md";
   return (
     <>
       <div className="flex flex-col items-center text-center">
@@ -101,14 +41,12 @@ function ConfirmedOrder({ order }: { order: DemoOrder }) {
         </div>
         <div>
           <p className="text-label-md text-ink-muted">Created</p>
-          <p className="mt-1 text-body-md text-ink">{formatCreatedAt(order.createdAt)}</p>
+          <p className="mt-1 text-body-md text-ink">{formatOrderDate(order.createdAt)}</p>
         </div>
         <div>
           <p className="text-label-md text-ink-muted">Status</p>
           <p className="mt-1">
-            <Badge tone="brand" data-testid="order-status">
-              Demo order
-            </Badge>
+            <OrderStatusBadge order={order} />
           </p>
         </div>
       </section>
@@ -118,36 +56,8 @@ function ConfirmedOrder({ order }: { order: DemoOrder }) {
           <h2 id="ordered-items-heading" className="font-heading text-headline-md text-ink">
             Ordered items ({order.itemCount})
           </h2>
-          <OrderLines order={order} />
-          <dl className="space-y-3 border-t border-line/30 pt-4">
-            <div className={row}>
-              <dt className="text-ink-muted">Subtotal</dt>
-              <dd className="tabular-nums text-ink">
-                <Money halalas={order.subtotalHalalas} />
-              </dd>
-            </div>
-            {order.savingsHalalas > 0 ? (
-              <div className={row}>
-                <dt className="text-brand">Savings included</dt>
-                <dd className="tabular-nums text-brand">
-                  <Money halalas={order.savingsHalalas} />
-                </dd>
-              </div>
-            ) : null}
-            <div className={row}>
-              <dt className="text-ink-muted">Shipping and tax</dt>
-              <dd className="text-ink-slate">Not included</dd>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 border-t border-line/30 pt-4">
-              <dt className="font-heading text-body-lg font-semibold text-ink">Estimated total</dt>
-              <dd className="font-heading text-price-lg text-brand tabular-nums" data-testid="order-total">
-                <Money halalas={order.estimatedTotalHalalas} />
-              </dd>
-            </div>
-          </dl>
-          <p className="mt-3 text-label-md font-normal text-ink-slate">
-            An estimate of the sample prices, not a final payable amount.
-          </p>
+          <OrderItemList order={order} />
+          <OrderMoneySummary order={order} />
         </section>
 
         <div className="space-y-6">
@@ -173,7 +83,13 @@ function ConfirmedOrder({ order }: { order: DemoOrder }) {
       </div>
 
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <ButtonLink href="/products" size="lg">
+        <ButtonLink href={`/account/orders/${order.id}`} size="lg">
+          View order details
+        </ButtonLink>
+        <ButtonLink href="/account/orders" variant="outline" size="lg">
+          View my demo orders
+        </ButtonLink>
+        <ButtonLink href="/products" variant="ghost" size="lg">
           Continue shopping
         </ButtonLink>
       </div>

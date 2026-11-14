@@ -48,7 +48,7 @@ The application uses reusable React components, semantic design tokens and respo
 
 ## Current Implementation
 
-The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart, Wishlist, demo Checkout and Order Confirmation are implemented, with an automated test suite.
+The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart, Wishlist, demo Checkout, Order Confirmation, My Orders and Order Details are implemented, with an automated test suite.
 
 ### Implemented
 
@@ -109,8 +109,8 @@ The Storefront is being developed around nine core customer-facing pages:
 5. **Checkout:** Customer details, delivery information and simulated payment. _Implemented (demo)._
 6. **Order Confirmation:** Purchase summary and confirmation. _Implemented (demo)._
 7. **Wishlist:** Saved products and shopping actions. _Implemented._
-8. **My Orders:** Customer purchase history.
-9. **Order Details & Tracking:** Order information and fulfillment status.
+8. **My Orders:** Customer purchase history. _Implemented (browser-local demo orders)._
+9. **Order Details & Tracking:** Order information and fulfillment status. _Implemented (no real fulfilment events)._
 
 The development strategy uses deterministic fictional fixtures before introducing secure backend integration. Planned capabilities are not presented as completed functionality.
 
@@ -210,7 +210,36 @@ Repeated submission is blocked while processing, and each checkout visit has a s
 The layout, step indicator, section structure and order review follow the designs. These elements are intentionally not reproduced because nothing real stands behind them: encryption or security-compliance claims, card entry fields, Apple Pay, mada and other payment brands, VAT amounts, free or priced delivery and delivery times, vouchers, warranty and returns promises, phone support, settlement and tax-invoice statements, tracking and invoice actions, and the shipping destination block with personal details.
 
 ### Future backend requirements
-A real implementation needs server-side cart and price authority, transactional stock reservation, a payment provider integration with server-confirmed capture, server-enforced idempotency, authenticated customers, stored addresses with consent, and transactional email. A later order-history feature can read the existing records without personal data, because each already carries a reference, timestamp, status, line snapshots and totals, and lookup is by order id.
+A real implementation needs server-side cart and price authority, transactional stock reservation, a payment provider integration with server-confirmed capture, server-enforced idempotency, authenticated customers, stored addresses with consent, and transactional email. The order-history pages read the existing records without personal data, because each already carries a reference, timestamp, status, line snapshots and totals, and lookup is by order id.
+
+---
+
+## My Orders and Order Details
+
+**Routes:** `/account/orders` (My Demo Orders) and `/account/orders/[id]` (Order Details & Tracking), inside the shared storefront shell. They read the same browser-local demo-order records created by checkout (`merchantos.storefront.demo-orders.v1`) with `useSyncExternalStore`, so nothing is written while browsing history and changes in another tab are picked up.
+
+**This is not an account.** There is no sign-in or cross-device sync. My Orders shows the demo orders saved in this browser only, not authenticated customer order history. Clearing site data removes them, and the store keeps at most 25 orders (and a size cap), dropping the oldest.
+
+### My Orders
+- Newest first. Orders with the same timestamp are ordered by reference, so the order is deterministic.
+- Each card shows the reference, created time, status, a product preview, item count, the saved estimated total and a link to the details.
+- Local search matches the demo reference or any purchased product name (case-insensitive, partial). It only searches records in this browser and never changes them.
+- There are no status filters or tabs: the only status that exists is "Demo order created", so none are invented.
+- Distinct states: loading, "No demo orders yet" with a Browse products link, "no match" with Clear search, and "Demo orders can't be read" when storage is blocked (never reported as an empty history).
+
+### Order Details
+- Shows the exact stored order from the URL: reference, created time, status, items with variants, quantities, unit prices and line totals, subtotal, savings and estimated total, and the simulated delivery and payment options.
+- Amounts come from the saved snapshot, never from the current catalogue, so later price changes do not alter history. Products still in the catalogue link to their product page; removed products keep their saved name and amounts without a link.
+- Unknown, malformed or unreadable ids show a missing-order state, and nothing is created.
+
+### Tracking limitations
+The progress timeline is real only for the first stage. "Demo order created" carries the actual creation time. Processing, Shipped, Out for delivery and Delivered are drawn inactive and labelled "Not available in this demo" in text, with no timestamps. There are no tracking numbers, couriers, delivery dates, maps or notifications, no status ever advances, and nothing in storage is changed to simulate fulfilment. A note on the page says that no payment, stock reservation, shipping or delivery has occurred.
+
+### Navigation
+The header orders icon, the mobile menu and the footer link to `/account/orders`. The confirmation page links to View order details and View my demo orders. Details link back to My orders and to the catalogue.
+
+### Differences from the design references
+Kept: the page structure, order cards, product preview, summary and timeline hierarchy (horizontal on wider screens, vertical on mobile). Not reproduced because nothing real stands behind them: shipment statuses and tabs, tracking codes, courier and arrival estimates, invoices, buy-again and support actions, warranty, voucher, VAT and delivery-address details, masked card details and the signed-in customer profile.
 
 ---
 
@@ -274,7 +303,7 @@ Standalone TypeScript checking requires generated Next.js route types.
 
 - `npm run typecheck` generates route types and runs the TypeScript check.
 - Browser tests run against a production build: run `npm run build` first. Install the browser once with `npx playwright install chromium`.
-- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, cart and wishlist logic (merging, limits, totals, validation of stored data), the cart and wishlist components, checkout validation, demo-order snapshots, storage corruption and unavailability, idempotent submission, the checkout and confirmation components, and browser journeys from Homepage to Catalog to Product Detail to Cart and Wishlist, including reload persistence, corrupt storage, cross-tab sync and the 404 for unknown products.
+- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, cart and wishlist logic (merging, limits, totals, validation of stored data), the cart and wishlist components, checkout validation, demo-order snapshots, storage corruption and unavailability, idempotent submission, the checkout and confirmation components, order sorting, search and lookup, the My Orders and Order Details components, and browser journeys from Homepage to Catalog to Product Detail to Cart and Wishlist, including reload persistence, corrupt storage, cross-tab sync and the 404 for unknown products.
 - A GitHub Actions workflow (`.github/workflows/quality.yml`) runs type generation, TypeScript, ESLint, the unit tests, the build and the browser tests on pull requests and pushes to `main`.
 
 ---

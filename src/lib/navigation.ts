@@ -35,7 +35,7 @@ export const footerGroups: Array<{ title: string; items: NavItem[] }> = [
   },
   {
     title: "Account",
-    items: [{ label: "My orders" }, { label: "Wishlist", href: "/wishlist" }, { label: "Sign in" }],
+    items: [{ label: "My orders", href: "/account/orders" }, { label: "Wishlist", href: "/wishlist" }, { label: "Sign in" }],
   },
 ];
 
