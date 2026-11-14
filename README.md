@@ -2,11 +2,11 @@
 
 ### Premium Ecommerce. Connected Retail Engineering.
 
-**MerchantOS Storefront** is a modern, responsive electronics ecommerce application built with **Next.js, React, TypeScript and Tailwind CSS**.
+**MerchantOS Storefront** is a premium, responsive electronics ecommerce app built with **Next.js 16, React, TypeScript and Tailwind CSS**.
 
-It is the customer-facing experience of the MerchantOS retail ecosystem, alongside an Angular-based Point of Sale application and an ASP.NET Core management platform.
+Shoppers can browse and search products, filter and sort the catalogue, choose variants, save a wishlist, manage a cart, check out and track their orders, across nine pages designed for desktop, tablet and mobile.
 
-The goal is to connect product discovery, online shopping, inventory and order management through a unified retail backend.
+It is the customer-facing app of the MerchantOS retail ecosystem, alongside an Angular-based Point of Sale application and an ASP.NET Core management platform. An optional read-only preview already reads live product data from the POS backend; wider backend integration is planned.
 
 **Project status: Active Development**
 
@@ -48,7 +48,7 @@ The application uses reusable React components, semantic design tokens and respo
 
 ## Current Implementation
 
-The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart, Wishlist, demo Checkout, Order Confirmation, My Orders and Order Details are implemented, with an automated test suite.
+The application foundation, responsive Homepage, Product Catalog, Product Detail, Shopping Cart, Wishlist, Checkout, Order Confirmation, My Orders and Order Details are implemented, with an automated test suite.
 
 ### Implemented
 
