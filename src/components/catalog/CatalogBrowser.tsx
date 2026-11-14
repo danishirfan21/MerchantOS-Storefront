@@ -24,6 +24,7 @@ import {
   type SortKey,
 } from "@/lib/catalog";
 import { catalogProducts } from "@/lib/fixtures/products";
+import { productPath } from "@/lib/products";
 
 /**
  * Catalog page body. Filter, sort and search state lives in the URL (shareable,
@@ -131,6 +132,7 @@ export function CatalogBrowser() {
               <ProductGrid
                 products={results}
                 columnsClassName="grid-cols-2 xl:grid-cols-3"
+                hrefFor={(product) => productPath(product, toSearchString(filters, sort))}
                 renderActions={(product) => <AddToCartPlaceholder product={product} />}
               />
             ) : (

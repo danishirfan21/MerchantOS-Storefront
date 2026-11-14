@@ -48,7 +48,7 @@ The application uses reusable React components, semantic design tokens and respo
 
 ## Current Implementation
 
-The application foundation, responsive Homepage and Product Catalog are implemented.
+The application foundation, responsive Homepage, Product Catalog and Product Detail pages are implemented, with an automated test suite.
 
 ### Implemented
 
@@ -67,11 +67,15 @@ The application foundation, responsive Homepage and Product Catalog are implemen
   - Filter and sort state kept in the URL, so views are shareable
   - Desktop sidebar and an accessible mobile filter drawer sharing one filter state
   - Empty state and live result count
+- **Product Detail** at `/products/[slug]`:
+  - One reusable page that serves all 25 catalogue products, prerendered at build time
+  - Gallery with selectable thumbnails, price with compare-at discount, availability, variants, quantity selector, overview, specifications, delivery note and related products
+  - Product cards on the Homepage and Catalog link to it, and "Back to catalog" restores the filters the shopper came from
 - Responsive design tokens and typography
 
 The Homepage and Catalog have been browser-checked at desktop, tablet and mobile sizes, down to 320px. TypeScript, ESLint and the production build pass.
 
-Product imagery currently uses temporary placeholders. Product links, cart actions and backend integrations are not yet implemented, and their controls are shown as disabled.
+Product imagery currently uses temporary placeholders (see Known limitations). Cart actions and backend integrations are not implemented, and their controls are shown as disabled.
 
 ---
 
@@ -99,7 +103,7 @@ The Storefront is being developed around nine core customer-facing pages:
 
 1. **Homepage:** Flagship products, departments and promotions. _Implemented._
 2. **Product Catalog:** Product search, filtering and sorting. _Implemented._
-3. **Product Detail:** Image galleries, specifications and variants.
+3. **Product Detail:** Image galleries, specifications and variants. _Implemented._
 4. **Shopping Cart:** Product selection, quantities and totals.
 5. **Checkout:** Customer details, delivery information and simulated payment.
 6. **Order Confirmation:** Purchase summary and confirmation.
@@ -108,6 +112,33 @@ The Storefront is being developed around nine core customer-facing pages:
 9. **Order Details & Tracking:** Order information and fulfillment status.
 
 The development strategy uses deterministic fictional fixtures before introducing secure backend integration. Planned capabilities are not presented as completed functionality.
+
+---
+
+## Product Detail
+
+### Routing
+
+Product URLs are derived from the product name by one function, `productSlug()` in `src/lib/products.ts`, for example `/products/flagship-smartphone-256gb`. Lookup (`getProductBySlug`), related products and quantity rules live in the same module, and the same product records feed the Homepage, Catalog and detail pages, so nothing is duplicated.
+
+All slugs are prerendered with `generateStaticParams`. Because Cache Components streams the response for unknown params, `src/proxy.ts` rewrites unknown slugs to a path that does not exist, so they return a genuine HTTP 404.
+
+### Fixture-driven data
+
+Variants, specifications and stock all come from the `Product` records in `src/lib/fixtures/products.ts`:
+
+- **Variants** are optional and only exist where a record defines them (for example finish or colour). They are presentational: they never change price or stock, because a variant with its own price or stock would need its own record.
+- **Specifications** are taken from an explicit `specGroups` field when present; otherwise a table is derived from the record's brand, category, storage and feature line.
+- **Quantity** is limited by the known `stockCount` for low-stock items, by a per-order limit of 10 otherwise, and is disabled for out-of-stock items.
+
+All catalogue data is fictional sample data, not live inventory.
+
+### Known limitations
+
+- Product imagery is placeholder only. No authorized photography exists yet, so each gallery shows four clearly labelled placeholder slots rather than reusing one picture as different angles.
+- Add to cart is shown but disabled until the cart is built. Wishlist, checkout, authentication and any backend integration are deferred.
+- Reviews, warranty or certification claims, bundles and delivery promises from the design references are intentionally not reproduced, because there is no data behind them.
+- Below roughly 313px of available width the header would overflow. This only matters at 320px on browsers with a permanent scrollbar.
 
 ---
 
@@ -161,6 +192,18 @@ Customer-facing authorization and checkout endpoints will be introduced or adapt
 - `npm run build` verifies the production build.
 
 Standalone TypeScript checking requires generated Next.js route types.
+
+### Automated Tests
+
+| Layer | Tools | Location | Command |
+| ----- | ----- | -------- | ------- |
+| Unit and component | Vitest, React Testing Library, jsdom | `tests/unit`, `tests/components` | `npm test` |
+| Browser | Playwright (Chromium) | `tests/e2e` | `npm run test:e2e` |
+
+- `npm run typecheck` generates route types and runs the TypeScript check.
+- Browser tests run against a production build: run `npm run build` first. Install the browser once with `npx playwright install chromium`.
+- Tests use the deterministic fixtures and cover slug generation, lookup, variants, quantity and availability rules, the gallery, quantity and variant controls, and the Homepage to Catalog to Product Detail journey, including the 404 for unknown products.
+- A GitHub Actions workflow (`.github/workflows/quality.yml`) runs type generation, TypeScript, ESLint, the unit tests, the build and the browser tests on pull requests and pushes to `main`.
 
 ---
 

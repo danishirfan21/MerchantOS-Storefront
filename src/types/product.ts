@@ -19,6 +19,19 @@ export type Product = {
   badge?: string;
   /** Authorized product image. Absent until real assets are supplied. */
   imageUrl?: string;
-  /** Link to the product page, once that page exists. */
-  href?: string;
+  /** Longer description shown on the product page. */
+  description?: string;
+  /** Explicit specification groups. When absent, a table is derived from the fields above. */
+  specGroups?: SpecGroup[];
+  /**
+   * Selectable options that are purely presentational (e.g. colour). They never change
+   * price or stock: a variant with its own price or stock needs its own product record.
+   */
+  variants?: VariantGroup[];
 };
+
+export type SpecRow = { label: string; value: string };
+export type SpecGroup = { title: string; rows: SpecRow[] };
+
+export type VariantOption = { id: string; label: string };
+export type VariantGroup = { id: string; label: string; options: VariantOption[] };

@@ -4,12 +4,15 @@ import { ProductPrice } from "@/components/products/ProductPrice";
 import { Badge } from "@/components/ui/Badge";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { cn } from "@/lib/cn";
+import { productPath } from "@/lib/products";
 import type { Product } from "@/types/product";
 
 type ProductCardProps = {
   product: Product;
   /** Action area (add to cart, wishlist...) supplied by the page that owns that state. */
   actions?: ReactNode;
+  /** Detail-page link. Defaults to the product's own page. */
+  href?: string;
   className?: string;
 };
 
@@ -31,7 +34,7 @@ function StockLine({ product }: { product: Product }) {
  * Presentational product card. Without an authorized image it shows a neutral
  * placeholder; it never loads remote Stitch images.
  */
-export function ProductCard({ product, actions, className }: ProductCardProps) {
+export function ProductCard({ product, actions, href = productPath(product), className }: ProductCardProps) {
   const titleId = `product-${product.id}-title`;
 
   return (
@@ -59,13 +62,9 @@ export function ProductCard({ product, actions, className }: ProductCardProps) {
       <div className="flex flex-1 flex-col gap-1.5 p-3 sm:gap-2 sm:p-4">
         <p className="text-label-sm font-semibold uppercase text-ink-slate">{product.brand}</p>
         <h3 id={titleId} className="font-heading text-body-lg font-semibold sm:text-headline-sm line-clamp-2 text-ink">
-          {product.href ? (
-            <Link href={product.href} className="after:absolute after:inset-0 hover:text-brand">
-              {product.name}
-            </Link>
-          ) : (
-            product.name
-          )}
+          <Link href={href} className="after:absolute after:inset-0 hover:text-brand">
+            {product.name}
+          </Link>
         </h3>
         {product.spec ? <p className="line-clamp-2 text-body-sm text-ink-slate">{product.spec}</p> : null}
         <ProductPrice price={product.price} compareAtPrice={product.compareAtPrice} className="mt-auto pt-2" />
