@@ -39,7 +39,7 @@ Storefront is the third application, connecting to the same ASP.NET Core API and
 | Icons                       | Lucide React                                  |
 | Typography                  | Plus Jakarta Sans, Inter                      |
 | Architecture                | React Server Components and Client Components |
-| Planned backend integration | ASP.NET Core 10 Web API                       |
+| Backend integration         | ASP.NET Core 10 Web API                       |
 | Shared retail database      | PostgreSQL 17, through backend services       |
 
 The application uses reusable React components, semantic design tokens and responsive layouts to maintain consistent interfaces across devices.
@@ -98,9 +98,9 @@ Screenshots of the current implementation are in [`docs/visual-reviews/`](docs/v
 
 ---
 
-## Planned Customer Experience
+## Customer Experience
 
-The Storefront is being developed around nine core customer-facing pages:
+The Storefront is built around nine core customer-facing pages:
 
 1. **Homepage:** Flagship products, departments and promotions. _Implemented._
 2. **Product Catalog:** Product search, filtering and sorting. _Implemented._
@@ -112,7 +112,7 @@ The Storefront is being developed around nine core customer-facing pages:
 8. **My Orders:** Customer purchase history. _Implemented (browser-local demo orders)._
 9. **Order Details & Tracking:** Order information and fulfillment status. _Implemented (no real fulfilment events)._
 
-The development strategy uses deterministic fictional fixtures before introducing secure backend integration. Planned capabilities are not presented as completed functionality.
+The development strategy uses deterministic fictional fixtures before introducing secure backend integration.
 
 ---
 
@@ -243,9 +243,9 @@ Kept: the page structure, order cards, product preview, summary and timeline hie
 
 ---
 
-## Live Catalogue Preview (read-only, optional)
+## Live Catalogue Preview
 
-By default the storefront runs entirely on its fictional demo catalogue, exactly as described above. An optional **read-only preview** can instead read a small set of real products from the MerchantOS POS backend through a server-side request. It lives at `/catalog-preview` and `/catalog-preview/[slug]`, separate from `/products`, and is **not** purchasable.
+By default the storefront runs entirely on its fictional demo catalogue, exactly as described above. An optional **live catalogue preview** can instead read a small set of real products from the MerchantOS POS backend through a server-side request. It lives at `/catalog-preview` and `/catalog-preview/[slug]`, separate from `/products`, and is **not** purchasable.
 
 **Enabling it** (server-only environment variables, never `NEXT_PUBLIC_`):
 
