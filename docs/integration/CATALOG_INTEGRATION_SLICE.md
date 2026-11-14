@@ -1,13 +1,13 @@
 # Catalog Integration Slice (implemented, read-only)
 
-Status: implemented locally and **uncommitted**, for review. This document records what was built on top of the original audit (`BACKEND_CAPABILITY_AUDIT.md` and the other five documents keep their original, audit-time conclusions). It claims only what was verified; "implemented" and "verified in a running service" are kept apart below.
+Status: implemented and pushed on feature branches (pull requests open, **not merged**). Reviewed; remote CI status is recorded in section 7b. This document records what was built on top of the original audit (`BACKEND_CAPABILITY_AUDIT.md` and the other five documents keep their original, audit-time conclusions). It claims only what was verified; "implemented" and "verified in a running service" are kept apart below.
 
 ## 1. Revisions used
 
 | Repository | Base revision | Branch | State |
 |---|---|---|---|
-| Storefront | `959f936` (audit docs commit on `main`, which contains `cdb35eb`) | `feature/storefront-catalog-integration` | Uncommitted changes |
-| POS | `17a9ad5a86fa67c0c775300a294fefa8c8214375` (current public `main` at the time) | `feature/storefront-catalog-api`, in a separate fresh clone | Uncommitted changes |
+| Storefront | `959f936` (audit docs commit on `main`, which contains `cdb35eb`) | `feature/storefront-catalog-integration` | Committed (`e0bf5f9`) and pushed; later commits are docs or review fixes only |
+| POS | `17a9ad5a86fa67c0c775300a294fefa8c8214375` (current public `main` at the time) | `feature/storefront-catalog-api`, in a separate fresh clone | Committed (`8b508c1`) and pushed |
 | Admin | `acba986` (not touched) | none | Unchanged |
 
 The POS work is in a separate fresh clone, not the stale local POS working copy, which was left untouched.
@@ -68,6 +68,18 @@ Real integration (isolated environment on this machine): a fresh PostgreSQL 16 c
 
 Browser tests of API mode used a controlled stand-in backend (`tests/e2e/support/mock-pos.mjs`) that deliberately leaks extra fields (SKU, stock, id) to prove they never reach the page; the real POS integration above was exercised with curl and a Chromium script, not by the Playwright suite.
 
+## 7b. Verification levels
+
+| Level | Status |
+|---|---|
+| Implemented | POS public catalog routes, Storefront adapter, preview routes, security headers (sections 2-6). |
+| Locally tested | POS 111 tests, Storefront 215 unit/component and 65 Playwright (5 skipped by design), typecheck, lint and production build, re-run during final review. |
+| Real integration (local, isolated PostgreSQL, final review re-run) | Live POS API plus Storefront production build in API mode: prices and availability matched the database rows (for example `p01` 429900 halalas with 8 on hand shown as in stock; `p11` with 4 on hand shown as low stock); anonymous staff routes and `POST /api/checkout` returned 401; order, payment, adjustment and stock fingerprints were unchanged after browsing. |
+| Remote CI | Recorded in the pull requests. CI does not start a POS-backed stack, so the real POS-to-Storefront integration and the PostgreSQL-backed POS tests are **not** exercised remotely; Storefront CI uses the stand-in backend only. |
+| Not implemented | Cart, checkout, orders or accounts for API products; description, images, variants; public-catalog table; HSTS; distributed rate limiting. |
+
+CSP review: the experimental Next.js SRI option keeps static generation but does not remove the inline bootstrap scripts the prerendered shell emits, and nonces would require dynamic rendering of every page. `'unsafe-inline'` is therefore kept for `script-src` and `style-src`; every other directive stays strict. A hard 404 status for an unknown preview slug is also not possible: the detail view streams inside Suspense, so the HTTP status is 200 and the page body shows the not-found state.
+
 ## 8. Differences and incidents to know about
 
 - The scratch environment lives on `D:` (`D:\MerchantOS-Step12-work`) because the `C:` volume was full. It holds a .NET 10 SDK (downloaded with the user's approval), the POS clone, an isolated PostgreSQL cluster and tool caches. None of it is part of either repository.
@@ -83,7 +95,7 @@ Browser tests of API mode used a controlled stand-in backend (`tests/e2e/support
 - `'unsafe-inline'` in the CSP; no HSTS; rate limiting is per remote address and in-memory (single process).
 - The POS catalog flag is intended only for an isolated environment; public production remains NO-GO.
 - No CI job runs the POS integration; the Storefront workflow was not changed.
-- Remote CI was not run for either repository.
+- Remote CI results are recorded in the pull requests, not here.
 
 ## 10. Recommended next step (not started)
 

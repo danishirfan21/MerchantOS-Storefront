@@ -2,7 +2,7 @@
 
 Proposal only. Nothing here is started. Labels: **Verified**, **Recommended**, **Decision required**, **Blocked**. All work stays inside the POS project's isolated-demo boundary (public production is NO-GO per its own readiness documents).
 
-> **Status update:** the first coding milestone below (catalog vertical slice) has been implemented locally, uncommitted, with a narrower scope. See [`CATALOG_INTEGRATION_SLICE.md`](CATALOG_INTEGRATION_SLICE.md) for what was built and verified. The rest of this document is the original audit-time plan.
+> **Status update:** the first coding milestone below (catalog vertical slice) has been implemented on a feature branch (pull request open, not merged) with a narrower scope. See [`CATALOG_INTEGRATION_SLICE.md`](CATALOG_INTEGRATION_SLICE.md) for what was built and verified. The rest of this document is the original audit-time plan.
 
 ## 0. Standing assumptions (Recommended)
 
