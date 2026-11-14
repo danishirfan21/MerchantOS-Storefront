@@ -6,7 +6,7 @@
 
 Shoppers can browse and search products, filter and sort the catalogue, choose variants, save a wishlist, manage a cart, check out and track their orders, across nine pages designed for desktop, tablet and mobile.
 
-It is the customer-facing app of the MerchantOS retail ecosystem, alongside an Angular-based Point of Sale application and an ASP.NET Core management platform. An optional read-only preview already reads live product data from the POS backend; wider backend integration is planned.
+It is the customer-facing app of the MerchantOS retail ecosystem, alongside an Angular-based Point of Sale application and an ASP.NET Core management platform. It can show live product data from the POS backend, served through the Next.js server.
 
 **Project status: Active Development**
 
@@ -24,7 +24,7 @@ MerchantOS demonstrates how different frontend architectures can serve distinct 
 
 The POS and Admin applications are completed for their portfolio and isolated-staging scope.
 
-Storefront is the third application, with future integration into the existing ASP.NET Core API and PostgreSQL database.
+Storefront is the third application, connecting to the same ASP.NET Core API and PostgreSQL database.
 
 ---
 
